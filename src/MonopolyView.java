@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class MonopolyView extends JFrame {
     JButton start_btn, exit_btn;
     JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, jLeft, jRight, jTop, jBottom, player1_infoPanel, player2_infoPanel, player3_infoPanel, player4_infoPanel, playerStandingPanel;
-    JLabel playerNumberLabel;
+    JLabel playerNumberLabel, diceLabel = new JLabel("0");
     JTextField playerNumber;
     private MonopolyController control;
 
@@ -60,6 +60,12 @@ public class MonopolyView extends JFrame {
 
         mainPanel.add(playerNumberPanel, BorderLayout.CENTER);
 
+        setVisible(true);
+    }
+    public void game_start(int playernum){
+        this.setBounds(100, 50, 1100, 850);
+        mainPanel.remove(startPanel);
+        mainPanel.remove(playerNumberPanel);
 
         //Monopoly Board Panel
         boardPanel = new JPanel(new GridLayout(11, 11,5,5));
@@ -70,75 +76,77 @@ public class MonopolyView extends JFrame {
                 cell.setSize(70, 70);
 
                 if (row == 0 || row == 10 || col == 0 || col == 10) {
-                    if(row == 0 && col == 0){
+                    if (row == 0 && col == 0) {
                         JPanel color = new JPanel();
                         color.setBackground(Color.white);
-                        cell.add(color,BorderLayout.NORTH);
+                        cell.add(color, BorderLayout.NORTH);
                         JLabel text = new JLabel("Start");
                         text.setHorizontalAlignment(SwingConstants.CENTER);
                         cell.add(text);
-                    } else if (row == 0 && col == 1 || row == 0 && col == 2 || row == 0 && col ==3){
+                    } else if (row == 0 && col == 1 || row == 0 && col == 2 || row == 0 && col == 3) {
                         JPanel color = new JPanel();
-                        color.setBackground(new Color (0,171,78));
-                        cell.add(color,BorderLayout.NORTH);
-                        if (col == 1){
+                        color.setBackground(new Color(0, 171, 78));
+                        cell.add(color, BorderLayout.NORTH);
+                        if (col == 1) {
                             JLabel text = new JLabel("<html>Kwun<br>Tong</html>");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
-                        } else if (col == 2){
+                        } else if (col == 2) {
                             JLabel text = new JLabel("<html>Choi<br>Hung</html>");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
-                        } else if (col == 3){
+                        } else if (col == 3) {
                             JLabel text = new JLabel("Lok Fu");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
                         }
-                    } else if(row == 0 && col == 4){
+                    } else if (row == 0 && col == 4) {
                         JPanel color = new JPanel();
                         color.setBackground(Color.white);
-                        cell.add(color,BorderLayout.NORTH);
+                        cell.add(color, BorderLayout.NORTH);
                         JLabel text = new JLabel("Chance");
                         text.setHorizontalAlignment(SwingConstants.CENTER);
                         cell.add(text);
-                    } else if(row == 0 && col == 5 || row == 0 && col == 6 || row == 0 && col == 7){
+                    } else if (row == 0 && col == 5 || row == 0 && col == 6 || row == 0 && col == 7) {
                         JPanel color = new JPanel();
-                        color.setBackground(new Color (49,29,62));
-                        cell.add(color,BorderLayout.NORTH);
-                        if (col == 5){
+                        color.setBackground(new Color(49, 29, 62));
+                        cell.add(color, BorderLayout.NORTH);
+                        if (col == 5) {
                             JLabel text = new JLabel("<html>Tsueng<br>Kwan O</html>");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
-                        } else if (col == 6){
+                        } else if (col == 6) {
                             JLabel text = new JLabel("Hang Hau");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
-                        } else if (col == 7){
+                        } else if (col == 7) {
                             JLabel text = new JLabel("Po Lam");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
                         }
-                    }else if(row == 0 && col == 10){ //top row last col
+                    } else if (row == 0 && col == 10) { //top row last col
                         JPanel color = new JPanel();
                         color.setBackground(Color.white);
-                        cell.add(color,BorderLayout.NORTH);
+                        cell.add(color, BorderLayout.NORTH);
                         JLabel text = new JLabel("<html>Get<br>$2000</html>");
                         text.setHorizontalAlignment(SwingConstants.CENTER);
                         cell.add(text);
                     }
                     cell.setBackground(new Color(169, 207, 255));
 
-                    playerStandingPanel = new JPanel(new FlowLayout());
-                    playerStandingPanel.setBackground(Color.gray);
-                    cell.add(playerStandingPanel, BorderLayout.SOUTH);
-
-                    //image testing
-                    ImageIcon picture = createImageIcon("images/black.png");
-                    JLabel picLbl = new JLabel(picture);
-                    playerStandingPanel.add(picLbl);
 
                     boardPanel.add(cell);
-                } else if (row == 5 && col == 5){ //middle grid - back to home page
+                } else if (row == 4 && col == 5){
+                    JButton roll_btn = new JButton("Roll Dice");
+                    roll_btn.addActionListener(e -> control.modelRollDice());
+                    cell.add(roll_btn);
+                    boardPanel.add(cell);
+                } else if (row == 5 && col == 5){
+                    boardPanel.add(cell);
+                    diceLabel.setText("0");
+                    cell.add(diceLabel,BorderLayout.CENTER);
+                    cell.setBorder(BorderFactory.createTitledBorder("Dice"));
+                } else if (row == 6 && col == 5){ //middle grid - back to home page
                     JButton back_btn = new JButton("Back");
                     back_btn.addActionListener(e -> control.modelMainMenu());
                     cell.add(back_btn);
@@ -149,12 +157,6 @@ public class MonopolyView extends JFrame {
             }
         }
 
-        setVisible(true);
-    }
-    public void game_start(){
-        this.setBounds(100, 50, 1100, 850);
-        mainPanel.remove(startPanel);
-        mainPanel.remove(playerNumberPanel);
         mainPanel.add(boardPanel, BorderLayout.CENTER);
         mainPanel.revalidate();
         mainPanel.repaint();
@@ -172,19 +174,27 @@ public class MonopolyView extends JFrame {
 
         //Player Info
         player1_infoPanel = new JPanel();
-        jRight.add(player1_infoPanel);
         player1_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 1"));
         player2_infoPanel = new JPanel();
-        jRight.add(player2_infoPanel);
         player2_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 2"));
         player3_infoPanel = new JPanel();
-        jRight.add(player3_infoPanel);
         player3_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 3"));
         player4_infoPanel = new JPanel();
-        jRight.add(player4_infoPanel);
         player4_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 4"));
 
-
+        if (playernum == 2){
+            jRight.add(player1_infoPanel);
+            jRight.add(player2_infoPanel);
+        } else if (playernum == 3){
+            jRight.add(player1_infoPanel);
+            jRight.add(player2_infoPanel);
+            jRight.add(player3_infoPanel);
+        } else if (playernum == 4){
+            jRight.add(player1_infoPanel);
+            jRight.add(player2_infoPanel);
+            jRight.add(player3_infoPanel);
+            jRight.add(player4_infoPanel);
+        }
 
         jTop = new JPanel();
         mainPanel.add(jTop, "North");
@@ -193,6 +203,13 @@ public class MonopolyView extends JFrame {
         jBottom = new JPanel();
         mainPanel.add(jBottom, "South");
         jBottom.setPreferredSize(new Dimension(640, 40));
+
+        //Dice Label
+        diceLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        diceLabel.setVerticalAlignment(SwingConstants.CENTER);
+
+        control.modelPositionUpdate();
+
     }
 
     public void mainMenu(){
@@ -207,6 +224,40 @@ public class MonopolyView extends JFrame {
         mainPanel.revalidate();
         mainPanel.repaint();
     }
+    public void positionUpdate(int player, int position){
+        JPanel grid = (JPanel) boardPanel.getComponent(position);
+        if (player == 0){
+            JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
+            if (southPanel == null) {
+                southPanel = new JPanel(new FlowLayout());
+                grid.add(southPanel, BorderLayout.SOUTH);
+                grid.putClientProperty("SouthPanel", southPanel);
+            }
+            ImageIcon picture = createImageIcon("images/player1.png");
+            JLabel player1 = new JLabel(picture);
+            southPanel.add(player1,BorderLayout.SOUTH);
+            southPanel.setBackground(new Color(169, 207, 255));
+
+        } else if (player == 1){
+            JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
+            if (southPanel == null) {
+                southPanel = new JPanel(new FlowLayout());
+                grid.add(southPanel, BorderLayout.SOUTH);
+                grid.putClientProperty("SouthPanel", southPanel);
+            }
+            ImageIcon picture = createImageIcon("images/player2.png");
+            JLabel player2 = new JLabel(picture);
+            southPanel.add(player2,BorderLayout.SOUTH);
+            southPanel.setBackground(new Color(169, 207, 255));
+        }
+    }
+
+    public void updateDice(int dice) {
+        JPanel grid = (JPanel) boardPanel.getComponent(60);
+        diceLabel.setText(Integer.toString(dice));
+        grid.add(diceLabel,BorderLayout.CENTER); // Add without specifying layout constraint
+        grid.revalidate(); // Ensure layout updates correctly
+    }
     //Image insert
     private ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = getClass().getResource(path);
@@ -216,5 +267,8 @@ public class MonopolyView extends JFrame {
             System.err.println("Couldn't find the file: " + path);
             return null;
         }
+    }
+    private int coordToindex(int row, int col) {     // convert 2D array to 1D array index
+        return (col * 11) + row;
     }
 }

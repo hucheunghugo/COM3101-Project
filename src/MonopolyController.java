@@ -15,9 +15,24 @@ public class MonopolyController {
     public void modelGameStart(int playernum){
         model.gameStart(playernum);
     }
-    public void gameStart(){
-        view.game_start();
+    public void gameStart(int playernum){
+        view.game_start(playernum);
     }
+
+    public void modelPositionUpdate(){
+        model.positionUpdate();
+    }
+    public void positionUpdate(int player, int playerPosition){
+        view.positionUpdate(player, playerPosition);
+    }
+
+    public void modelRollDice(){
+        model.rollDice();
+    }
+    public void updateDice(int dice){
+        view.updateDice(dice);
+    }
+
 
     public void modelMainMenu(){
         model.mainMenu();
