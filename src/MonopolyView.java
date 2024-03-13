@@ -208,7 +208,7 @@ public class MonopolyView extends JFrame {
         diceLabel.setHorizontalAlignment(SwingConstants.CENTER);
         diceLabel.setVerticalAlignment(SwingConstants.CENTER);
 
-        control.modelPositionUpdate();
+        control.modelUpdatePosition();
 
     }
 
@@ -224,32 +224,55 @@ public class MonopolyView extends JFrame {
         mainPanel.revalidate();
         mainPanel.repaint();
     }
-    public void positionUpdate(int player, int position){
-        JPanel grid = (JPanel) boardPanel.getComponent(position);
-        if (player == 0){
-            JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
-            if (southPanel == null) {
-                southPanel = new JPanel(new FlowLayout());
-                grid.add(southPanel, BorderLayout.SOUTH);
-                grid.putClientProperty("SouthPanel", southPanel);
-            }
-            ImageIcon picture = createImageIcon("images/player1.png");
-            JLabel player1 = new JLabel(picture);
-            southPanel.add(player1,BorderLayout.SOUTH);
-            southPanel.setBackground(new Color(169, 207, 255));
+    public void updatePosition(int player, int[] nextPlayerPosition){
 
-        } else if (player == 1){
+        for (int row = 0; row < 11; row ++){
+            for(int col = 0; col < 11; col++){
+                if (row == 0 || row == 10 || col == 0 || col == 10) {
+                    JPanel grid = (JPanel) boardPanel.getComponent(coordToindex(row,col));
+                    JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
+                    if (southPanel == null) {
+                        southPanel = new JPanel(new FlowLayout());
+                        grid.add(southPanel, BorderLayout.SOUTH);
+                        grid.putClientProperty("SouthPanel", southPanel);
+                    }
+                    southPanel.setBackground(new Color(169, 207, 255));
+                }
+            }
+        }
+
+        /*for (int i = 0; i < player; i++){
+            JPanel grid = (JPanel) boardPanel.getComponent(nextPlayerPosition[i]);
             JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
             if (southPanel == null) {
                 southPanel = new JPanel(new FlowLayout());
                 grid.add(southPanel, BorderLayout.SOUTH);
                 grid.putClientProperty("SouthPanel", southPanel);
             }
-            ImageIcon picture = createImageIcon("images/player2.png");
-            JLabel player2 = new JLabel(picture);
-            southPanel.add(player2,BorderLayout.SOUTH);
-            southPanel.setBackground(new Color(169, 207, 255));
+
+            if (i == 0){
+                ImageIcon picture = createImageIcon("images/player1.png");
+                JLabel player1 = new JLabel(picture);
+                southPanel.add(player1,BorderLayout.SOUTH);
+
+            } else if (i == 1){
+                ImageIcon picture = createImageIcon("images/player2.png");
+                JLabel player2 = new JLabel(picture);
+                southPanel.add(player2,BorderLayout.SOUTH);
+
+            } else if (i == 2){
+                ImageIcon picture = createImageIcon("images/player3.png");
+                JLabel player3 = new JLabel(picture);
+                southPanel.add(player3,BorderLayout.SOUTH);
+
+            } else if (i == 3){
+                ImageIcon picture = createImageIcon("images/player4.png");
+                JLabel player4 = new JLabel(picture);
+                southPanel.add(player4,BorderLayout.SOUTH);
+
+            }
         }
+        */
     }
 
     public void updateDice(int dice) {

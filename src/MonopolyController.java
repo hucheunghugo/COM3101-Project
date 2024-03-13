@@ -19,11 +19,11 @@ public class MonopolyController {
         view.game_start(playernum);
     }
 
-    public void modelPositionUpdate(){
-        model.positionUpdate();
+    public void modelUpdatePosition(){
+        model.updatePosition();
     }
-    public void positionUpdate(int player, int playerPosition){
-        view.positionUpdate(player, playerPosition);
+    public void updatePosition(int player, int[] nextPlayerPosition){
+        view.updatePosition(player,  nextPlayerPosition);
     }
 
     public void modelRollDice(){
