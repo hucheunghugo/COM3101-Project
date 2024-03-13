@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 public class MonopolyView extends JFrame {
     JButton start_btn, exit_btn;
-    JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, jLeft, jRight, jTop, jBottom, player1_infoPanel, player2_infoPanel, player3_infoPanel, player4_infoPanel, playerStandingPanel;
+    JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, jLeft, jRight, jTop, jBottom, player1_infoPanel, player2_infoPanel, player3_infoPanel, player4_infoPanel;
     JLabel playerNumberLabel, diceLabel = new JLabel("0");
     JTextField playerNumber;
     private MonopolyController control;
@@ -224,7 +224,7 @@ public class MonopolyView extends JFrame {
         mainPanel.revalidate();
         mainPanel.repaint();
     }
-    public void updatePosition(int player, int[] nextPlayerPosition){
+    public void updatePosition(int playerNum, int[] nextPlayerPosition, int[] boardPosition){
 
         for (int row = 0; row < 11; row ++){
             for(int col = 0; col < 11; col++){
@@ -236,8 +236,32 @@ public class MonopolyView extends JFrame {
                         grid.add(southPanel, BorderLayout.SOUTH);
                         grid.putClientProperty("SouthPanel", southPanel);
                     }
+                    southPanel.removeAll();
                     southPanel.setBackground(new Color(169, 207, 255));
                 }
+            }
+        }
+        for (int i = 0; i < playerNum; i++){
+            if (i == 0){
+                System.out.println("Next Position(Player 1): " + boardPosition[nextPlayerPosition[i]]);
+
+                JPanel grid = (JPanel) boardPanel.getComponent(boardPosition[nextPlayerPosition[i]]);
+                JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
+                southPanel.setBackground(new Color(169, 207, 255));
+
+                ImageIcon picture = createImageIcon("images/player1.png");
+                JLabel player1 = new JLabel(picture);
+                southPanel.add(player1,BorderLayout.SOUTH);
+
+            } else if ( i == 1){
+                System.out.println("Next Position(Player 2): " + boardPosition[nextPlayerPosition[i]]);
+                JPanel grid = (JPanel) boardPanel.getComponent(boardPosition[nextPlayerPosition[i]]);
+                JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
+
+                ImageIcon picture = createImageIcon("images/player2.png");
+                JLabel player2 = new JLabel(picture);
+                southPanel.add(player2,BorderLayout.SOUTH);
+
             }
         }
 

@@ -42,7 +42,7 @@ public class MonopolyModel {
     }
 
     public void updatePosition(){
-        control.updatePosition(playerNumber, boardPosition);
+        control.updatePosition(playerNumber, nextPlayerPosition, boardPosition);
     }
 
     public void rollDice(){
@@ -54,7 +54,7 @@ public class MonopolyModel {
         if (nextPlayerPosition[currentPlayer] > 38){
             nextPlayerPosition[currentPlayer] -= 39;
         }
-        control.updatePosition(playerNumber, boardPosition);
+        control.updatePosition(playerNumber, nextPlayerPosition, boardPosition);
 
         System.out.println("Roll Dice " + currentPlayerPosition[currentPlayer] + " | " +  nextPlayerPosition[currentPlayer]);
         currentPlayerPosition[currentPlayer] = nextPlayerPosition[currentPlayer];
