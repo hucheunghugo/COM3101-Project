@@ -237,11 +237,14 @@ public class MonopolyView extends JFrame {
                         grid.putClientProperty("SouthPanel", southPanel);
                     }
                     southPanel.removeAll();
+                    southPanel.revalidate();
+                    southPanel.repaint();
                     southPanel.setBackground(new Color(169, 207, 255));
                 }
             }
         }
         for (int i = 0; i < playerNum; i++){
+
             if (i == 0){
                 System.out.println("Next Position(Player 1): " + boardPosition[nextPlayerPosition[i]]);
 
@@ -262,41 +265,26 @@ public class MonopolyView extends JFrame {
                 JLabel player2 = new JLabel(picture);
                 southPanel.add(player2,BorderLayout.SOUTH);
 
-            }
-        }
+            } else if ( i == 2){
+                System.out.println("Next Position(Player 3): " + boardPosition[nextPlayerPosition[i]]);
+                JPanel grid = (JPanel) boardPanel.getComponent(boardPosition[nextPlayerPosition[i]]);
+                JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
 
-        /*for (int i = 0; i < player; i++){
-            JPanel grid = (JPanel) boardPanel.getComponent(nextPlayerPosition[i]);
-            JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
-            if (southPanel == null) {
-                southPanel = new JPanel(new FlowLayout());
-                grid.add(southPanel, BorderLayout.SOUTH);
-                grid.putClientProperty("SouthPanel", southPanel);
-            }
-
-            if (i == 0){
-                ImageIcon picture = createImageIcon("images/player1.png");
-                JLabel player1 = new JLabel(picture);
-                southPanel.add(player1,BorderLayout.SOUTH);
-
-            } else if (i == 1){
-                ImageIcon picture = createImageIcon("images/player2.png");
-                JLabel player2 = new JLabel(picture);
-                southPanel.add(player2,BorderLayout.SOUTH);
-
-            } else if (i == 2){
                 ImageIcon picture = createImageIcon("images/player3.png");
                 JLabel player3 = new JLabel(picture);
                 southPanel.add(player3,BorderLayout.SOUTH);
 
-            } else if (i == 3){
+            } else if ( i == 3){
+                System.out.println("Next Position(Player 4): " + boardPosition[nextPlayerPosition[i]]);
+                JPanel grid = (JPanel) boardPanel.getComponent(boardPosition[nextPlayerPosition[i]]);
+                JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
+
                 ImageIcon picture = createImageIcon("images/player4.png");
                 JLabel player4 = new JLabel(picture);
                 southPanel.add(player4,BorderLayout.SOUTH);
 
             }
         }
-        */
     }
 
     public void updateDice(int dice) {
