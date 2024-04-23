@@ -56,7 +56,7 @@ public class MonopolyController {
     }
 
     public void updateOwner(int player, int pos){
-        view.updateOwner(player, pos);
+        //view.updateOwner(player, pos);
     }
     public void updateBalance(int[] balance){
         view.updateBalance(balance);
