@@ -51,6 +51,9 @@ public class MonopolyController {
     public void buyLand(){
         model.buyLand();
     }
+    public void showGiftNotify(){
+        view.showGiftNotify();
+    }
     public void updateBalance(int[] balance){
         view.updateBalance(balance);
     }

@@ -26,7 +26,7 @@ public class MonopolyView extends JFrame {
     public MonopolyView(){
         super("HSUHK COM3101 Project");
         setLayout(new BorderLayout());
-        setBounds(200, 50, 350, 150);
+        setBounds(850, 400, 350, 150);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -357,6 +357,10 @@ public class MonopolyView extends JFrame {
 
     public void showPayNotify(int price, int ownership){
         JOptionPane.showMessageDialog(null, "You have paid " + price + " to player " + ownership);
+    }
+
+    public void showGiftNotify(){
+        JOptionPane.showMessageDialog(null, "You have get 2000 as a gift!");
     }
 
 
