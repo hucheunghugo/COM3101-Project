@@ -296,7 +296,7 @@ public class MonopolyView extends JFrame {
 
                 ImageIcon picture = createImageIcon("images/player1.png");
                 JLabel player1 = new JLabel(picture);
-                southPanel.add(player1,BorderLayout.SOUTH);
+                southPanel.add(player1);
 
             } else if ( i == 1){
                 System.out.println("Next Position(Player 2): " + boardPosition[nextPlayerPosition[i]]);
@@ -305,7 +305,7 @@ public class MonopolyView extends JFrame {
 
                 ImageIcon picture = createImageIcon("images/player2.png");
                 JLabel player2 = new JLabel(picture);
-                southPanel.add(player2,BorderLayout.SOUTH);
+                southPanel.add(player2);
 
             } else if ( i == 2){
                 System.out.println("Next Position(Player 3): " + boardPosition[nextPlayerPosition[i]]);
@@ -314,7 +314,7 @@ public class MonopolyView extends JFrame {
 
                 ImageIcon picture = createImageIcon("images/player3.png");
                 JLabel player3 = new JLabel(picture);
-                southPanel.add(player3,BorderLayout.SOUTH);
+                southPanel.add(player3);
 
             } else if ( i == 3){
                 System.out.println("Next Position(Player 4): " + boardPosition[nextPlayerPosition[i]]);
@@ -323,7 +323,7 @@ public class MonopolyView extends JFrame {
 
                 ImageIcon picture = createImageIcon("images/player4.png");
                 JLabel player4 = new JLabel(picture);
-                southPanel.add(player4,BorderLayout.SOUTH);
+                southPanel.add(player4);
 
             }
         }
@@ -362,6 +362,18 @@ public class MonopolyView extends JFrame {
     public void showGiftNotify(){
         JOptionPane.showMessageDialog(null, "You have get 2000 as a gift!");
     }
+
+    /*public void updateOwner(int player, int pos){
+
+        JPanel grid = (JPanel) boardPanel.getComponent(pos);
+        JPanel northPanel = (JPanel) grid.getClientProperty("NorthPanel");
+
+        ImageIcon picture = createImageIcon("images/player1.png");
+        JLabel player1 = new JLabel(picture);
+        northPanel.add(player1);
+    }
+
+     */
 
 
     //Image insert

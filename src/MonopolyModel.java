@@ -121,6 +121,7 @@ public class MonopolyModel {
     public void buyLand(){
         landOwnership[currentPlayerPosition[currentPlayer]] = currentPlayer;
         balanceUpdate(2,currentPlayer, landPrice[currentPlayerPosition[currentPlayer]]);
+        control.updateOwner(currentPlayer, currentPlayerPosition[currentPlayer]);
     }
 
     public void balanceUpdate(int type, int player, int amount){
