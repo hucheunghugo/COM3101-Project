@@ -44,4 +44,8 @@ public class MonopolyController {
     public void showBuyOption(int price){
         view.showBuyOption(price);
     }
+
+    public void showPayNotify(int price, int ownership){
+        view.showPayNotify(price, ownership);
+    }
 }

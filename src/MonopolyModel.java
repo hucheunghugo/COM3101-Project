@@ -1,7 +1,7 @@
 import java.io.*;
 public class MonopolyModel {
     private int playerNumber = 0, currentPlayer = 0;
-    private int[] currentPlayerPosition, nextPlayerPosition, boardPosition, landPrice = new int[32],
+    private int[] currentPlayerPosition, nextPlayerPosition, playerBalance, boardPosition, landPrice = new int[32],
             landOwnership = new int [32];
     MonopolyController control;
 
@@ -9,8 +9,6 @@ public class MonopolyModel {
         this.control = c;
 
     }
-
-
 
     public MonopolyModel(){
         this.connectData();
@@ -34,7 +32,7 @@ public class MonopolyModel {
             System.out.println(landPrice[i]);
         }
         for (int i = 0; i <landOwnership.length; i++){
-            landOwnership[i] = 0;
+            landOwnership[i] = 2;
         }
     }
     public void gameStart(int playernum) {
@@ -43,9 +41,11 @@ public class MonopolyModel {
 
         currentPlayerPosition = new int[playerNumber];
         nextPlayerPosition = new int[playerNumber];
+        playerBalance = new int[playerNumber];
         for (int i = 0; i < currentPlayerPosition.length; i++) {
             currentPlayerPosition[i] = 0;
             nextPlayerPosition[i] = 0;
+            playerBalance[i] = 10000;
         }
 
         //Board Position Adjustment
@@ -101,6 +101,16 @@ public class MonopolyModel {
         int ownership = landOwnership[currentPlayerPosition[currentPlayer]];
         if (ownership == 0){
             control.showBuyOption(landPrice[currentPlayerPosition[currentPlayer]]);
+        } else {
+            control.showPayNotify(landPrice[currentPlayerPosition[currentPlayer]], ownership);
+        }
+    }
+
+    public void balanceUpdate(int type, int player, int amount){
+        if (type == 1){
+            playerBalance[player] += amount;
+        } else if (type == 2){
+            playerBalance[player] -= amount;
         }
     }
 

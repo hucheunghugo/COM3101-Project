@@ -299,6 +299,10 @@ public class MonopolyView extends JFrame {
             JOptionPane.showMessageDialog(null, "You clicked No!");
         }
     }
+
+    public void showPayNotify(int price, int ownership){
+        JOptionPane.showMessageDialog(null, "You have paid " + price + " to player " + ownership);
+    }
     //Image insert
     private ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = getClass().getResource(path);
