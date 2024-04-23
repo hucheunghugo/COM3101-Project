@@ -131,7 +131,7 @@ public class MonopolyView extends JFrame {
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
                         }
-                    } else if (row == 0 && col == 8) { //top row last col
+                    } else if (row == 0 && col == 8 || row == 8 && col == 0) { //top row last col
                         JPanel color = new JPanel();
                         color.setBackground(Color.white);
                         cell.add(color, BorderLayout.NORTH);
