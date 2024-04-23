@@ -166,36 +166,31 @@ public class MonopolyView extends JFrame {
 
         jLeft = new JPanel();
         mainPanel.add(jLeft, "West");
-        jLeft.setPreferredSize(new Dimension(40, 480));
 
         jRight = new JPanel();
         mainPanel.add(jRight, "East");
-        jRight.setPreferredSize(new Dimension(200, 240));
+        jRight.setPreferredSize(new Dimension(200, 480));
         jRight.setLayout(new BoxLayout(jRight, BoxLayout.Y_AXIS));
 
         //Player Info
         player1_infoPanel = new JPanel();
         player1_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 1"));
+        player1_infoPanel.setMaximumSize(new Dimension(200, 500));
         player2_infoPanel = new JPanel();
         player2_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 2"));
+        player2_infoPanel.setMaximumSize(new Dimension(200, 300));
         player3_infoPanel = new JPanel();
         player3_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 3"));
+        //player3_infoPanel.setPreferredSize(new Dimension(200, 120));
         player4_infoPanel = new JPanel();
         player4_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 4"));
+        //player4_infoPanel.setPreferredSize(new Dimension(200, 120));
 
-        if (playernum == 2){
-            jRight.add(player1_infoPanel);
-            jRight.add(player2_infoPanel);
-        } else if (playernum == 3){
-            jRight.add(player1_infoPanel);
-            jRight.add(player2_infoPanel);
-            jRight.add(player3_infoPanel);
-        } else if (playernum == 4){
-            jRight.add(player1_infoPanel);
-            jRight.add(player2_infoPanel);
-            jRight.add(player3_infoPanel);
-            jRight.add(player4_infoPanel);
-        }
+
+        jRight.add(player1_infoPanel);
+        jRight.add(player2_infoPanel);
+        jRight.add(player3_infoPanel);
+        jRight.add(player4_infoPanel);
 
         jTop = new JPanel();
         mainPanel.add(jTop, "North");
