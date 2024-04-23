@@ -1,7 +1,8 @@
 import java.io.*;
 public class MonopolyModel {
     private int playerNumber = 0, currentPlayer = 0;
-    private int[] currentPlayerPosition, nextPlayerPosition, boardPosition, landPrice = new int[32];
+    private int[] currentPlayerPosition, nextPlayerPosition, boardPosition, landPrice = new int[32],
+            landOwnership = new int [32];
     MonopolyController control;
 
     public void setController(MonopolyController c) {
@@ -32,7 +33,9 @@ public class MonopolyModel {
         for (int i = 0; i < landPrice.length; i++){
             System.out.println(landPrice[i]);
         }
-
+        for (int i = 0; i <landOwnership.length; i++){
+            landOwnership[i] = 0;
+        }
     }
     public void gameStart(int playernum) {
         //Set the amount of player
@@ -85,10 +88,19 @@ public class MonopolyModel {
         System.out.println("Roll Dice " + currentPlayerPosition[currentPlayer] + " | " +  nextPlayerPosition[currentPlayer]);
         currentPlayerPosition[currentPlayer] = nextPlayerPosition[currentPlayer];
 
+        landCheck();
+
         if (currentPlayer == playerNumber - 1){
             currentPlayer = 0;
         } else {
             currentPlayer++;
+        }
+    }
+
+    public void landCheck(){
+        int ownership = landOwnership[currentPlayerPosition[currentPlayer]];
+        if (ownership == 0){
+            control.showBuyOption(landPrice[currentPlayerPosition[currentPlayer]]);
         }
     }
 

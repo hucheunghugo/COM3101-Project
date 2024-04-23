@@ -40,4 +40,8 @@ public class MonopolyController {
     public void mainMenu(){
         view.mainMenu();
     }
+
+    public void showBuyOption(int price){
+        view.showBuyOption(price);
+    }
 }

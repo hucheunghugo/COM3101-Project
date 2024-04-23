@@ -175,10 +175,8 @@ public class MonopolyView extends JFrame {
         //Player Info
         player1_infoPanel = new JPanel();
         player1_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 1"));
-        player1_infoPanel.setMaximumSize(new Dimension(200, 500));
         player2_infoPanel = new JPanel();
         player2_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 2"));
-        player2_infoPanel.setMaximumSize(new Dimension(200, 300));
         player3_infoPanel = new JPanel();
         player3_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 3"));
         //player3_infoPanel.setPreferredSize(new Dimension(200, 120));
@@ -288,6 +286,18 @@ public class MonopolyView extends JFrame {
         diceLabel.setText(Integer.toString(dice));
         grid.add(diceLabel,BorderLayout.CENTER); // Add without specifying layout constraint
         grid.revalidate(); // Ensure layout updates correctly
+    }
+
+    public void showBuyOption(int price){
+        // Show a JOptionPane with message, title, and message type
+        int result = JOptionPane.showConfirmDialog(null, "This is an empty land. It cost: " + price + " \nDo you want to buy it?",
+                "Do you want to buy this land?", JOptionPane.YES_NO_OPTION);
+
+        if (result == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "You clicked Yes!");
+        } else {
+            JOptionPane.showMessageDialog(null, "You clicked No!");
+        }
     }
     //Image insert
     private ImageIcon createImageIcon(String path) {
