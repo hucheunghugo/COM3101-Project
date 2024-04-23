@@ -1,6 +1,7 @@
+import java.io.*;
 public class MonopolyModel {
     private int playerNumber = 0, currentPlayer = 0;
-    private int[] currentPlayerPosition, nextPlayerPosition, boardPosition;
+    private int[] currentPlayerPosition, nextPlayerPosition, boardPosition, landPrice = new int[32];
     MonopolyController control;
 
     public void setController(MonopolyController c) {
@@ -8,6 +9,31 @@ public class MonopolyModel {
 
     }
 
+
+
+    public MonopolyModel(){
+        this.connectData();
+    }
+
+    public void connectData(){
+        String fileName ="priceData.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                landPrice[Integer.parseInt(data[0])] = Integer.parseInt(data[1]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (int i = 0; i < landPrice.length; i++){
+            System.out.println(landPrice[i]);
+        }
+
+    }
     public void gameStart(int playernum) {
         //Set the amount of player
         playerNumber = playernum;
@@ -20,18 +46,18 @@ public class MonopolyModel {
         }
 
         //Board Position Adjustment
-        boardPosition = new int[39];
-        for(int i = 0; i < 11; i++){
+        boardPosition = new int[32];
+        for(int i = 0; i < 9; i++){
             boardPosition[i] = i;
         }
-        for (int i = 11; i < 20; i++){
-            boardPosition[i] = 11 * (i - 9) - 1;
+        for (int i = 9; i < 18; i++){
+            boardPosition[i] = 9 * (i - 8) - 1;
         }
-        for (int i = 20; i < 31; i++){
-            boardPosition[i] = 120 - (i - 19);
+        for (int i = 18; i < 26; i++){
+            boardPosition[i] = 80 - (i - 17);
         }
-        for (int i = 31; i < 39; i++){
-            boardPosition[i] = (39 - i) * 11;
+        for (int i = 26; i < 32; i++){
+            boardPosition[i] = (32 - i) * 9;
         }
 
         for (int i = 0; i<boardPosition.length; i++){
@@ -51,8 +77,8 @@ public class MonopolyModel {
         control.updateDice(dice);
 
         nextPlayerPosition[currentPlayer] = currentPlayerPosition[currentPlayer] + dice;
-        if (nextPlayerPosition[currentPlayer] > 38){
-            nextPlayerPosition[currentPlayer] -= 39;
+        if (nextPlayerPosition[currentPlayer] > 31){
+            nextPlayerPosition[currentPlayer] -= 32;
         }
         control.updatePosition(playerNumber, nextPlayerPosition, boardPosition);
 

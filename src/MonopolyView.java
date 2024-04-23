@@ -8,7 +8,8 @@ import java.awt.event.ActionListener;
 
 public class MonopolyView extends JFrame {
     JButton start_btn, exit_btn;
-    JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, jLeft, jRight, jTop, jBottom, player1_infoPanel, player2_infoPanel, player3_infoPanel, player4_infoPanel;
+    JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, jLeft, jRight, jTop, jBottom,
+            player1_infoPanel, player2_infoPanel, player3_infoPanel, player4_infoPanel;
     JLabel playerNumberLabel, diceLabel = new JLabel("0");
     JTextField playerNumber;
     private MonopolyController control;
@@ -68,14 +69,14 @@ public class MonopolyView extends JFrame {
         mainPanel.remove(playerNumberPanel);
 
         //Monopoly Board Panel
-        boardPanel = new JPanel(new GridLayout(11, 11,5,5));
-        for (int row = 0; row < 11; row++) {
-            for (int col = 0; col < 11; col++) {
+        boardPanel = new JPanel(new GridLayout(9, 9,5,5));
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
 
                 JPanel cell = new JPanel(new BorderLayout());
                 cell.setSize(70, 70);
 
-                if (row == 0 || row == 10 || col == 0 || col == 10) {
+                if (row == 0 || row == 8 || col == 0 || col == 8) {
                     if (row == 0 && col == 0) {
                         JPanel color = new JPanel();
                         color.setBackground(Color.white);
@@ -124,7 +125,7 @@ public class MonopolyView extends JFrame {
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
                         }
-                    } else if (row == 0 && col == 10) { //top row last col
+                    } else if (row == 0 && col == 8) { //top row last col
                         JPanel color = new JPanel();
                         color.setBackground(Color.white);
                         cell.add(color, BorderLayout.NORTH);
@@ -136,17 +137,17 @@ public class MonopolyView extends JFrame {
 
 
                     boardPanel.add(cell);
-                } else if (row == 4 && col == 5){
+                } else if (row == 3 && col == 4){
                     JButton roll_btn = new JButton("Roll Dice");
                     roll_btn.addActionListener(e -> control.modelRollDice());
                     cell.add(roll_btn);
                     boardPanel.add(cell);
-                } else if (row == 5 && col == 5){
+                } else if (row == 4 && col == 4){
                     boardPanel.add(cell);
                     diceLabel.setText("0");
                     cell.add(diceLabel,BorderLayout.CENTER);
                     cell.setBorder(BorderFactory.createTitledBorder("Dice"));
-                } else if (row == 6 && col == 5){ //middle grid - back to home page
+                } else if (row == 5 && col == 4){ //middle grid - back to home page
                     JButton back_btn = new JButton("Back");
                     back_btn.addActionListener(e -> control.modelMainMenu());
                     cell.add(back_btn);
@@ -226,9 +227,9 @@ public class MonopolyView extends JFrame {
     }
     public void updatePosition(int playerNum, int[] nextPlayerPosition, int[] boardPosition){
 
-        for (int row = 0; row < 11; row ++){
-            for(int col = 0; col < 11; col++){
-                if (row == 0 || row == 10 || col == 0 || col == 10) {
+        for (int row = 0; row < 9; row ++){
+            for(int col = 0; col < 9; col++){
+                if (row == 0 || row == 8 || col == 0 || col == 8) {
                     JPanel grid = (JPanel) boardPanel.getComponent(coordToindex(row,col));
                     JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
                     if (southPanel == null) {
@@ -304,6 +305,6 @@ public class MonopolyView extends JFrame {
         }
     }
     private int coordToindex(int row, int col) {     // convert 2D array to 1D array index
-        return (col * 11) + row;
+        return (col * 9) + row;
     }
 }
