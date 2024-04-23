@@ -48,4 +48,10 @@ public class MonopolyController {
     public void showPayNotify(int price, int ownership){
         view.showPayNotify(price, ownership);
     }
+    public void buyLand(){
+        model.buyLand();
+    }
+    public void updateBalance(int[] balance){
+        view.updateBalance(balance);
+    }
 }

@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.BoxLayout;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.FlowLayout;
@@ -8,9 +9,13 @@ import java.awt.event.ActionListener;
 
 public class MonopolyView extends JFrame {
     JButton start_btn, exit_btn;
-    JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, jLeft, jRight, jTop, jBottom,
+    JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, jLeft, infoPanel, jTop, jBottom,
             player1_infoPanel, player2_infoPanel, player3_infoPanel, player4_infoPanel;
-    JLabel playerNumberLabel, diceLabel = new JLabel("0");
+    JLabel playerNumberLabel, diceLabel = new JLabel("0"),
+            player1_balance, player1_land, player1_jail,
+            player2_balance, player2_land, player2_jail,
+            player3_balance, player3_land, player3_jail,
+            player4_balance, player4_land, player4_jail;
     JTextField playerNumber;
     private MonopolyController control;
 
@@ -64,9 +69,10 @@ public class MonopolyView extends JFrame {
         setVisible(true);
     }
     public void game_start(int playernum){
-        this.setBounds(100, 50, 1100, 850);
+        this.setBounds(100, 50, 1100, 900);
         mainPanel.remove(startPanel);
         mainPanel.remove(playerNumberPanel);
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));mainPanel.setBorder(new EmptyBorder(15, 25, 15, 25));
 
         //Monopoly Board Panel
         boardPanel = new JPanel(new GridLayout(9, 9,5,5));
@@ -158,45 +164,90 @@ public class MonopolyView extends JFrame {
             }
         }
 
-        mainPanel.add(boardPanel, BorderLayout.CENTER);
+        mainPanel.add(boardPanel);
         mainPanel.revalidate();
         mainPanel.repaint();
 
-        //Adding Blank Space
+        mainPanel.add(Box.createHorizontalStrut(50)); // Adjust the size according to your needs
 
-        jLeft = new JPanel();
-        mainPanel.add(jLeft, "West");
-
-        jRight = new JPanel();
-        mainPanel.add(jRight, "East");
-        jRight.setPreferredSize(new Dimension(200, 480));
-        jRight.setLayout(new BoxLayout(jRight, BoxLayout.Y_AXIS));
+        infoPanel = new JPanel();
+        mainPanel.add(infoPanel);
+        infoPanel.setPreferredSize(new Dimension(500, 420));
+        infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
 
         //Player Info
         player1_infoPanel = new JPanel();
+        player1_infoPanel = new JPanel(new GridLayout(3, 1)); // GridLayout with 2 rows and 1 column
         player1_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 1"));
+        player1_infoPanel.setPreferredSize(new Dimension(500, 120));
+
+        //Player 1
+        player1_balance = new JLabel("Balance:　");
+        player1_balance.setBorder(new EmptyBorder(0, 5, 0, 5));
+        player1_land = new JLabel("Land Own: ");
+        player1_land.setBorder(new EmptyBorder(0, 5, 0, 5));
+        player1_jail = new JLabel("Jail Day: ");
+        player1_jail.setBorder(new EmptyBorder(0, 5, 0, 5));
+        player1_infoPanel.add(player1_balance);
+        player1_infoPanel.add(player1_land);
+        player1_infoPanel.add(player1_jail);
+
+        //Player 2
         player2_infoPanel = new JPanel();
+        player2_infoPanel = new JPanel(new GridLayout(3, 1)); // GridLayout with 2 rows and 1 column
         player2_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 2"));
+        player2_infoPanel.setPreferredSize(new Dimension(500, 120));
+
+        player2_balance = new JLabel("Balance:　");
+        player2_balance.setBorder(new EmptyBorder(0, 5, 0, 5));
+        player2_land = new JLabel("Land Own: ");
+        player2_land.setBorder(new EmptyBorder(0, 5, 0, 5));
+        player2_jail = new JLabel("Jail Day: ");
+        player2_jail.setBorder(new EmptyBorder(0, 5, 0, 5));
+
+        player2_infoPanel.add(player2_balance);
+        player2_infoPanel.add(player2_land);
+        player2_infoPanel.add(player2_jail);
+
+        //Player 3
         player3_infoPanel = new JPanel();
+        player3_infoPanel = new JPanel(new GridLayout(3, 1)); // GridLayout with 2 rows and 1 column
         player3_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 3"));
-        //player3_infoPanel.setPreferredSize(new Dimension(200, 120));
+        player3_infoPanel.setPreferredSize(new Dimension(500, 120));
+
+        player3_balance = new JLabel("Balance:　");
+        player3_balance.setBorder(new EmptyBorder(0, 5, 0, 5));
+        player3_land = new JLabel("Land Own: ");
+        player3_land.setBorder(new EmptyBorder(0, 5, 0, 5));
+        player3_jail = new JLabel("Jail Day: ");
+        player3_jail.setBorder(new EmptyBorder(0, 5, 0, 5));
+
+        player3_infoPanel.add(player3_balance);
+        player3_infoPanel.add(player3_land);
+        player3_infoPanel.add(player3_jail);
+
+        //Player 4
         player4_infoPanel = new JPanel();
+        player4_infoPanel = new JPanel(new GridLayout(3, 1)); // GridLayout with 2 rows and 1 column
         player4_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 4"));
-        //player4_infoPanel.setPreferredSize(new Dimension(200, 120));
+        player4_infoPanel.setPreferredSize(new Dimension(500, 120));
+
+        player4_balance = new JLabel("Balance:　");
+        player4_balance.setBorder(new EmptyBorder(0, 5, 0, 5));
+        player4_land = new JLabel("Land Own: ");
+        player4_land.setBorder(new EmptyBorder(0, 5, 0, 5));
+        player4_jail = new JLabel("Jail Day: ");
+        player4_jail.setBorder(new EmptyBorder(0, 5, 0, 5));
+
+        player4_infoPanel.add(player4_balance);
+        player4_infoPanel.add(player4_land);
+        player4_infoPanel.add(player4_jail);
 
 
-        jRight.add(player1_infoPanel);
-        jRight.add(player2_infoPanel);
-        jRight.add(player3_infoPanel);
-        jRight.add(player4_infoPanel);
-
-        jTop = new JPanel();
-        mainPanel.add(jTop, "North");
-        jTop.setPreferredSize(new Dimension(640, 40));
-
-        jBottom = new JPanel();
-        mainPanel.add(jBottom, "South");
-        jBottom.setPreferredSize(new Dimension(640, 40));
+        infoPanel.add(player1_infoPanel);
+        infoPanel.add(player2_infoPanel);
+        infoPanel.add(player3_infoPanel);
+        infoPanel.add(player4_infoPanel);
 
         //Dice Label
         diceLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -209,10 +260,7 @@ public class MonopolyView extends JFrame {
     public void mainMenu(){
         this.setBounds(200, 50, 350, 150);
         mainPanel.remove(boardPanel);
-        mainPanel.remove(jLeft);
-        mainPanel.remove(jRight);
-        mainPanel.remove(jTop);
-        mainPanel.remove(jBottom);
+        mainPanel.remove(infoPanel);
         mainPanel.add(startPanel, BorderLayout.NORTH);
         mainPanel.add(playerNumberPanel, BorderLayout.CENTER);
         mainPanel.revalidate();
@@ -294,15 +342,24 @@ public class MonopolyView extends JFrame {
                 "Do you want to buy this land?", JOptionPane.YES_NO_OPTION);
 
         if (result == JOptionPane.YES_OPTION) {
-            JOptionPane.showMessageDialog(null, "You clicked Yes!");
+            JOptionPane.showMessageDialog(null, "You just bought a land for " + price);
+            control.buyLand();
         } else {
-            JOptionPane.showMessageDialog(null, "You clicked No!");
+            JOptionPane.showMessageDialog(null, "You ignore the chance");
         }
+    }
+
+    public void updateBalance(int[] balance){
+        player1_balance.setText("Balance: " + balance[0]);
+        player2_balance.setText("Balance: " + balance[1]);
+
     }
 
     public void showPayNotify(int price, int ownership){
         JOptionPane.showMessageDialog(null, "You have paid " + price + " to player " + ownership);
     }
+
+
     //Image insert
     private ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = getClass().getResource(path);
