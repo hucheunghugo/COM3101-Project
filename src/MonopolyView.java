@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.BoxLayout;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -79,88 +80,77 @@ public class MonopolyView extends JFrame {
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
 
-                JPanel cell = new JPanel(new BorderLayout());
+                JPanel cell = new JPanel();
+                cell.setLayout(new BoxLayout(cell, BoxLayout.PAGE_AXIS)); // Use BoxLayout with vertical alignment
                 cell.setSize(70, 70);
 
                 if (row == 0 || row == 8 || col == 0 || col == 8) {
+                    cell.setBorder(new BevelBorder(BevelBorder.RAISED));
                     if (row == 0 && col == 0) {
-                        JPanel color = new JPanel();
+                        JPanel color = new JPanel(new GridLayout());
                         color.setBackground(Color.white);
-                        cell.add(color, BorderLayout.NORTH);
+                        cell.add(color);
                         JLabel text = new JLabel("Start");
-                        text.setHorizontalAlignment(SwingConstants.CENTER);
+                        text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
                     } else if (row == 0 && col == 1 || row == 0 && col == 2 || row == 0 && col == 3) {
-                        JPanel color = new JPanel();
+                        JPanel color = new JPanel(new GridLayout());
                         color.setBackground(new Color(0, 171, 78));
-                        cell.add(color, BorderLayout.NORTH);
-                        if (col == 1) {
-                            JLabel text = new JLabel("<html>Kwun<br>Tong</html>");
-                            text.setHorizontalAlignment(SwingConstants.CENTER);
-                            cell.add(text);
-                        } else if (col == 2) {
-                            JLabel text = new JLabel("<html>Choi<br>Hung</html>");
-                            text.setHorizontalAlignment(SwingConstants.CENTER);
-                            cell.add(text);
-                        } else if (col == 3) {
-                            JLabel text = new JLabel("Lok Fu");
-                            text.setHorizontalAlignment(SwingConstants.CENTER);
-                            cell.add(text);
-                        }
-                    } else if (row == 0 && col == 4) {
-                        JPanel color = new JPanel();
+                        cell.add(color);
+                        JLabel text = new JLabel("Kwun Tong");
+                        text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                        cell.add(text);
+                    } else if (row == 0 && col == 4 || row == 8 && col == 4 || row == 4 && col == 8 || row == 4 && col == 0) {
+                        JPanel color = new JPanel(new GridLayout());
                         color.setBackground(Color.white);
-                        cell.add(color, BorderLayout.NORTH);
+                        cell.add(color);
                         JLabel text = new JLabel("Chance");
-                        text.setHorizontalAlignment(SwingConstants.CENTER);
+                        text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
                     } else if (row == 0 && col == 5 || row == 0 && col == 6 || row == 0 && col == 7) {
-                        JPanel color = new JPanel();
+                        JPanel color = new JPanel(new GridLayout());
                         color.setBackground(new Color(49, 29, 62));
-                        cell.add(color, BorderLayout.NORTH);
-                        if (col == 5) {
-                            JLabel text = new JLabel("<html>Tsueng<br>Kwan O</html>");
-                            text.setHorizontalAlignment(SwingConstants.CENTER);
-                            cell.add(text);
-                        } else if (col == 6) {
-                            JLabel text = new JLabel("Hang Hau");
-                            text.setHorizontalAlignment(SwingConstants.CENTER);
-                            cell.add(text);
-                        } else if (col == 7) {
-                            JLabel text = new JLabel("Po Lam");
-                            text.setHorizontalAlignment(SwingConstants.CENTER);
-                            cell.add(text);
-                        }
+                        cell.add(color);
+                        JLabel text = new JLabel("Tsueng Kwan O");
+                        text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                        cell.add(text);
                     } else if (row == 0 && col == 8 || row == 8 && col == 0) { //top row last col
-                        JPanel color = new JPanel();
+                        JPanel color = new JPanel(new GridLayout());
                         color.setBackground(Color.white);
-                        cell.add(color, BorderLayout.NORTH);
-                        JLabel text = new JLabel("<html>Get<br>$2000</html>");
-                        text.setHorizontalAlignment(SwingConstants.CENTER);
+                        cell.add(color);
+                        JLabel text = new JLabel("Get $2000");
+                        text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                        cell.add(text);
+                    } else if(row == 8 && col ==8){
+                        JPanel color = new JPanel(new GridLayout());
+                        color.setBackground(Color.black);
+                        cell.add(color);
+                        JLabel text = new JLabel("Jail");
+                        text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                        cell.add(text);
+                    }else {
+                        JPanel color = new JPanel(new GridLayout());
+                        color.setBackground(new Color(49, 29, 62));
+                        cell.add(color);
+                        JLabel text = new JLabel("Tsueng Kwan O");
+                        text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
                     }
                     cell.setBackground(new Color(169, 207, 255));
-
-
-                    boardPanel.add(cell);
                 } else if (row == 3 && col == 4){
                     JButton roll_btn = new JButton("Roll Dice");
                     roll_btn.addActionListener(e -> control.modelRollDice());
                     cell.add(roll_btn);
-                    boardPanel.add(cell);
                 } else if (row == 4 && col == 4){
-                    boardPanel.add(cell);
                     diceLabel.setText("0");
-                    cell.add(diceLabel,BorderLayout.CENTER);
+                    cell.add(diceLabel);
                     cell.setBorder(BorderFactory.createTitledBorder("Dice"));
                 } else if (row == 5 && col == 4){ //middle grid - back to home page
                     JButton back_btn = new JButton("Back");
                     back_btn.addActionListener(e -> control.modelMainMenu());
                     cell.add(back_btn);
-                    boardPanel.add(cell);
-                } else {
-                    boardPanel.add(cell);
                 }
+                boardPanel.add(cell);
             }
         }
 
@@ -275,7 +265,7 @@ public class MonopolyView extends JFrame {
                     JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
                     if (southPanel == null) {
                         southPanel = new JPanel(new FlowLayout());
-                        grid.add(southPanel, BorderLayout.SOUTH);
+                        grid.add(southPanel);
                         grid.putClientProperty("SouthPanel", southPanel);
                     }
                     southPanel.removeAll();
@@ -363,18 +353,42 @@ public class MonopolyView extends JFrame {
         JOptionPane.showMessageDialog(null, "You have get 2000 as a gift!");
     }
 
-    /*public void updateOwner(int player, int pos){
+    public void updateOwner(int player, int pos, int[] boardPosition) {
+        JPanel cell = (JPanel) boardPanel.getComponent(boardPosition[pos]);
 
-        JPanel grid = (JPanel) boardPanel.getComponent(pos);
-        JPanel northPanel = (JPanel) grid.getClientProperty("NorthPanel");
+        // Ensure that the cell panel exists
+        if (cell != null) {
+            // Retrieve the color panel from the cell panel
+            JPanel colorPanel = null;
+            if (cell.getComponentCount() > 0) {
+                colorPanel = (JPanel) cell.getComponent(0); // Assuming color panel is the first component
+            }
 
-        ImageIcon picture = createImageIcon("images/player1.png");
-        JLabel player1 = new JLabel(picture);
-        northPanel.add(player1);
+            // Ensure that the color panel exists
+            if (colorPanel != null) {
+                ImageIcon picture = null;
+                if (player == 0) {
+                    picture = createImageIcon("images/player1.png");
+                } else if (player == 1) {
+                    picture = createImageIcon("images/player2.png");
+                }
+
+                if (picture != null) {
+                    System.out.println("True");
+                    // Set the new background color for the color panel
+                    JLabel playerLabel = new JLabel(picture);
+
+                    // Add the player label to the grid panel
+                    colorPanel.removeAll(); // Remove existing components
+                    colorPanel.add(playerLabel, BorderLayout.CENTER); // Add without specifying layout constraint
+                    colorPanel.revalidate();
+                    colorPanel.repaint();
+                } else {
+                    System.out.println("Image loading failed.");
+                }
+            }
+        }
     }
-
-     */
-
 
     //Image insert
     private ImageIcon createImageIcon(String path) {
