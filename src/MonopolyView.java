@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.BoxLayout;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -28,12 +29,13 @@ public class MonopolyView extends JFrame {
     public MonopolyView(){
         super("HSUHK COM3101 Project");
         setLayout(new BorderLayout());
-        setBounds(850, 400, 350, 150);
+        setBounds(850, 400, 400, 150);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Main Panel Setup
         mainPanel = new JPanel(new BorderLayout());
+
         add(mainPanel);
 
         //Start Panel
@@ -72,10 +74,11 @@ public class MonopolyView extends JFrame {
         setVisible(true);
     }
     public void game_start(int playernum){
-        this.setBounds(100, 50, 1100, 900);
+        this.setBounds(300, 100, 1200, 900);
         mainPanel.remove(startPanel);
         mainPanel.remove(playerNumberPanel);
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));mainPanel.setBorder(new EmptyBorder(15, 25, 15, 25));
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
+        mainPanel.setBorder(new EmptyBorder(15, 25, 15, 25));
 
         //Monopoly Board Panel
         boardPanel = new JPanel(new GridLayout(9, 9,5,5));
@@ -89,55 +92,216 @@ public class MonopolyView extends JFrame {
                 if (row == 0 || row == 8 || col == 0 || col == 8) {
                     cell.setBorder(new BevelBorder(BevelBorder.RAISED));
                     if (row == 0 && col == 0) {
-                        JPanel color = new JPanel(new GridLayout());
+                        JPanel color = new JPanel();
                         color.setBackground(Color.white);
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
+                        cell.add(Box.createVerticalStrut(15));
                         JLabel text = new JLabel("Start");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
-                    } else if (row == 0 && col == 1 || row == 0 && col == 2 || row == 0 && col == 3) {
-                        JPanel color = new JPanel(new GridLayout());
+                    } else if (row == 1 && col == 8 || row == 2 && col == 8 || row == 3 && col == 8) {
+                        JPanel color = new JPanel();
                         color.setBackground(new Color(0, 171, 78));
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        JLabel text = new JLabel("Kwun Tong");
-                        text.setAlignmentX(Component.CENTER_ALIGNMENT);
-                        cell.add(text);
+                        cell.add(Box.createVerticalStrut(15)); 
+                        if (row == 1) {
+                            JLabel text = new JLabel("Kwun Tong");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        } else if (row == 2) {
+                            JLabel text = new JLabel("Choi Hung");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        } else {
+                            JLabel text = new JLabel("Lok Fu");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }
+
+                    } else if(row == 0 && col == 1 || row == 0 && col == 2 || row == 0 && col == 3) {
+                        JPanel color = new JPanel();
+                        color.setBackground(new Color(0, 247, 255));
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
+                        cell.add(color);
+                        cell.add(Box.createVerticalStrut(15));
+                        if(col == 1) {
+                            JLabel text = new JLabel("Lok Ma Chau");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }else if(col == 2) {
+                            JLabel text = new JLabel("Fan Ling");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }else {
+                            JLabel text = new JLabel("Sha Tin");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }
+
+                    } else if(row == 0 && col == 5 || row == 0 && col == 6 || row == 0 && col == 7){
+                        JPanel color = new JPanel();;
+                        color.setBackground(new Color(166, 97, 0));
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
+                        cell.add(color);
+                        cell.add(Box.createVerticalStrut(15));
+                        if(col == 5) {
+                            JLabel text = new JLabel("Tuen Mun");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }else if(col == 6) {
+                            JLabel text = new JLabel("To Kwa Wan");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }else {
+                            JLabel text = new JLabel("Ma On Shan");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }
+
+                    } else if(row == 8 && col == 5 || row == 8 && col == 6 || row == 8 && col == 7){
+                        JPanel color = new JPanel();;
+                        color.setBackground(new Color(255, 149, 0));
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
+                        cell.add(color);
+                        cell.add(Box.createVerticalStrut(15));
+                        if(col == 7) {
+                            JLabel text = new JLabel("Olympic");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }else if(col == 6){
+                            JLabel text = new JLabel("Tsing Yi");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }else{
+                            JLabel text = new JLabel("Tung Chung");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }
+
+                    } else if(col == 0 && row == 5 || col == 0 && row == 6 || col == 0 && row == 7) {
+                        JPanel color = new JPanel();;
+                        color.setBackground(new Color(0, 108, 198));
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
+                        cell.add(color);
+                        cell.add(Box.createVerticalStrut(15));
+                        if(row == 5) {
+                            JLabel text = new JLabel("Tai Koo");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }else if(row == 6){
+                            JLabel text = new JLabel("Causeway Bay");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }else {
+                            JLabel text = new JLabel("Sheung Wan");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }
                     } else if (row == 0 && col == 4 || row == 8 && col == 4 || row == 4 && col == 8 || row == 4 && col == 0) {
-                        JPanel color = new JPanel(new GridLayout());
+                        JPanel color = new JPanel();
                         color.setBackground(Color.white);
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
+                        cell.add(Box.createVerticalStrut(15));
                         JLabel text = new JLabel("Chance");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
-                    } else if (row == 0 && col == 5 || row == 0 && col == 6 || row == 0 && col == 7) {
-                        JPanel color = new JPanel(new GridLayout());
-                        color.setBackground(new Color(49, 29, 62));
+
+                    } else if (row == 8 && col == 1 || row == 8 && col == 2 || row == 8 && col == 3) {
+                        JPanel color = new JPanel();
+                        color.setBackground(new Color(155, 52, 235));
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        JLabel text = new JLabel("Tsueng Kwan O");
-                        text.setAlignmentX(Component.CENTER_ALIGNMENT);
-                        cell.add(text);
+                        cell.add(Box.createVerticalStrut(15));
+                        if (col == 1) {
+                            JLabel text = new JLabel("Tsueng Kwan O");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        } else if (col == 2) {
+                            JLabel text = new JLabel("Hang Hau");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        } else {
+                            JLabel text = new JLabel("Po Lam");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }
+
+                    } else if(col == 0 && row == 1 || col == 0 && row == 2 || col == 0 && row == 3){
+                        JPanel color = new JPanel();
+                        color.setBackground(new Color(176, 250, 5));
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
+                        cell.add(color);
+                        cell.add(Box.createVerticalStrut(15));
+                        if(row == 1){
+                            JLabel text = new JLabel("South Horizons");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }else if(row == 3){
+                            JLabel text = new JLabel("Airport");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }else{
+                            JLabel text = new JLabel("Wong Chuk Hang");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }
+                    } else if(col == 8 && row == 5 || col == 8 && row == 6 || col == 8 && row == 7) {
+                        JPanel color = new JPanel();
+                        color.setBackground(new Color(255, 0, 0));
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
+                        cell.add(color);
+                        cell.add(Box.createVerticalStrut(15));
+                        if (row == 5) {
+                            JLabel text = new JLabel("Tsuen Wan");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        } else if (row == 6) {
+                            JLabel text = new JLabel("Mei Foo");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        } else {
+                            JLabel text = new JLabel("Mong Kok");
+                            text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            cell.add(text);
+                        }
+
                     } else if (row == 0 && col == 8 || row == 8 && col == 0) { //top row last col
-                        JPanel color = new JPanel(new GridLayout());
+                        JPanel color = new JPanel();
                         color.setBackground(Color.white);
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
+                        cell.add(Box.createVerticalStrut(15));
                         JLabel text = new JLabel("Get $2000");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
+
                     } else if(row == 8 && col ==8){
-                        JPanel color = new JPanel(new GridLayout());
+                        JPanel color = new JPanel();
                         color.setBackground(Color.black);
+                        color.setMaximumSize(new Dimension(100,100));
+                        color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
+                        cell.add(Box.createVerticalStrut(15));
                         JLabel text = new JLabel("Jail");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
-                    }else {
-                        JPanel color = new JPanel(new GridLayout());
-                        color.setBackground(new Color(49, 29, 62));
-                        cell.add(color);
-                        JLabel text = new JLabel("Tsueng Kwan O");
-                        text.setAlignmentX(Component.CENTER_ALIGNMENT);
-                        cell.add(text);
+
                     }
+
                     cell.setBackground(new Color(169, 207, 255));
                 } else if (row == 3 && col == 4){
                     JButton roll_btn = new JButton("Roll Dice");
@@ -147,10 +311,6 @@ public class MonopolyView extends JFrame {
                     diceLabel.setText("0");
                     cell.add(diceLabel);
                     cell.setBorder(BorderFactory.createTitledBorder("Dice"));
-                } else if (row == 5 && col == 4){ //middle grid - back to home page
-                    JButton back_btn = new JButton("Back");
-                    back_btn.addActionListener(e -> control.modelMainMenu());
-                    cell.add(back_btn);
                 }
                 boardPanel.add(cell);
             }
@@ -160,7 +320,7 @@ public class MonopolyView extends JFrame {
         mainPanel.revalidate();
         mainPanel.repaint();
 
-        mainPanel.add(Box.createHorizontalStrut(50)); // Adjust the size according to your needs
+        mainPanel.add(Box.createHorizontalStrut(50)); 
 
         infoPanel = new JPanel();
         mainPanel.add(infoPanel);
@@ -249,15 +409,6 @@ public class MonopolyView extends JFrame {
 
     }
 
-    public void mainMenu(){
-        this.setBounds(200, 50, 350, 150);
-        mainPanel.remove(boardPanel);
-        mainPanel.remove(infoPanel);
-        mainPanel.add(startPanel, BorderLayout.NORTH);
-        mainPanel.add(playerNumberPanel, BorderLayout.CENTER);
-        mainPanel.revalidate();
-        mainPanel.repaint();
-    }
     public void updatePosition(int playerNum, int[] nextPlayerPosition, int[] boardPosition){
 
         for (int row = 0; row < 9; row ++){
