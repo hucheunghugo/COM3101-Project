@@ -18,6 +18,7 @@ public class MonopolyView extends JFrame {
             player3_balance, player3_land, player3_jail,
             player4_balance, player4_land, player4_jail;
     JTextField playerNumber;
+    private int playerNo;
     private MonopolyController control;
 
     public void setController(MonopolyController cntl) {
@@ -44,6 +45,7 @@ public class MonopolyView extends JFrame {
         start_btn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
+                playerNo = Integer.parseInt(playerNumber.getText());
                 control.modelGameStart(Integer.parseInt(playerNumber.getText()));
             }
         });
@@ -340,8 +342,23 @@ public class MonopolyView extends JFrame {
     }
 
     public void updateBalance(int[] balance){
-        player1_balance.setText("Balance: " + balance[0]);
-        player2_balance.setText("Balance: " + balance[1]);
+        if (playerNo == 2){
+            player1_balance.setText("Balance: " + balance[0]);
+            player2_balance.setText("Balance: " + balance[1]);
+            player3_balance.setText("Balance: No Player");
+            player4_balance.setText("Balance: No Player");
+        } else if (playerNo == 3){
+            player1_balance.setText("Balance: " + balance[0]);
+            player2_balance.setText("Balance: " + balance[1]);
+            player3_balance.setText("Balance: " + balance[2]);
+            player4_balance.setText("Balance: No Player");
+        } else if (playerNo == 4){
+            player1_balance.setText("Balance: " + balance[0]);
+            player2_balance.setText("Balance: " + balance[1]);
+            player3_balance.setText("Balance: " + balance[2]);
+            player4_balance.setText("Balance: " + balance[3]);
+        }
+
 
     }
 
@@ -379,6 +396,10 @@ public class MonopolyView extends JFrame {
                     picture = createImageIcon("images/player1.png");
                 } else if (player == 1) {
                     picture = createImageIcon("images/player2.png");
+                } else if (player == 2) {
+                    picture = createImageIcon("images/player3.png");
+                } else if (player == 3) {
+                    picture = createImageIcon("images/player4.png");
                 }
 
                 if (picture != null) {
