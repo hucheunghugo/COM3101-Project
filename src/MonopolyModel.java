@@ -87,7 +87,7 @@ public class MonopolyModel {
             control.showJailNotify(jailDate[currentPlayer]+1);
         } else {
             //roll the dice
-            int dice = (int) (Math.random() * 6) + 1;
+            int dice = (int) (Math.random() * 10) + 1;
             control.updateDice(dice);
 
 

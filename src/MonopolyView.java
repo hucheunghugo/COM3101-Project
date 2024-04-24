@@ -8,12 +8,13 @@ import java.awt.*;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class MonopolyView extends JFrame {
     JButton start_btn, exit_btn;
     JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, jLeft, infoPanel, jTop, jBottom,
             player1_infoPanel, player2_infoPanel, player3_infoPanel, player4_infoPanel;
-    JLabel playerNumberLabel, diceLabel = new JLabel("0"),
+    JLabel playerNumberLabel,
             player1_balance, player1_land, player1_jail,
             player2_balance, player2_land, player2_jail,
             player3_balance, player3_land, player3_jail,
@@ -308,9 +309,8 @@ public class MonopolyView extends JFrame {
                     roll_btn.addActionListener(e -> control.modelRollDice());
                     cell.add(roll_btn);
                 } else if (row == 4 && col == 4){
-                    diceLabel.setText("0");
-                    cell.add(diceLabel);
                     cell.setBorder(BorderFactory.createTitledBorder("Dice"));
+                    cell.setBorder(new BevelBorder(BevelBorder.RAISED));
                 }
                 boardPanel.add(cell);
             }
@@ -401,10 +401,6 @@ public class MonopolyView extends JFrame {
         infoPanel.add(player3_infoPanel);
         infoPanel.add(player4_infoPanel);
 
-        //Dice Label
-        diceLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        diceLabel.setVerticalAlignment(SwingConstants.CENTER);
-
         control.modelUpdatePosition();
 
     }
@@ -473,10 +469,30 @@ public class MonopolyView extends JFrame {
     }
 
     public void updateDice(int dice) {
-        JPanel grid = (JPanel) boardPanel.getComponent(60);
-        diceLabel.setText(Integer.toString(dice));
-        grid.add(diceLabel,BorderLayout.CENTER); // Add without specifying layout constraint
-        grid.revalidate(); // Ensure layout updates correctly
+        JPanel grid = (JPanel) boardPanel.getComponent(40);
+        grid.removeAll();
+        grid.setLayout(new BoxLayout(grid,BoxLayout.X_AXIS));
+        ImageIcon dicepic1 = null, dicepic2 = null;
+        if (dice == 4){
+            dicepic1 = createDiceIcon("images/dice4.png");
+            dicepic2 = createDiceIcon("images/dice5.png");
+        } else {
+            dicepic1 = createDiceIcon("images/dice5.png");
+            dicepic2 = createDiceIcon("images/dice4.png");
+        }
+        JLabel dice1Label = new JLabel(dicepic1);
+        JLabel dice2Label = new JLabel(dicepic2);
+        dice1Label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        dice1Label.setAlignmentY(Component.CENTER_ALIGNMENT);
+        dice2Label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        dice2Label.setAlignmentY(Component.CENTER_ALIGNMENT);
+        grid.add(Box.createVerticalStrut(2));
+        grid.add(dice1Label);
+        grid.add(Box.createVerticalStrut(2));
+        grid.add(dice2Label); // Add without specifying layout constraint
+        grid.add(Box.createVerticalStrut(2));
+        grid.revalidate();
+
     }
 
     public void showBuyOption(int price){
@@ -608,9 +624,18 @@ public class MonopolyView extends JFrame {
     }
     //Image insert
     private ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = getClass().getResource(path);
+        URL imgURL = getClass().getResource(path);
         if (imgURL != null) {
             return new ImageIcon(new ImageIcon(imgURL).getImage().getScaledInstance(5, 5, Image.SCALE_DEFAULT));
+        } else {
+            System.err.println("Couldn't find the file: " + path);
+            return null;
+        }
+    }
+    private ImageIcon createDiceIcon(String path) {
+        URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(new ImageIcon(imgURL).getImage().getScaledInstance(30, 30, Image.SCALE_DEFAULT));
         } else {
             System.err.println("Couldn't find the file: " + path);
             return null;
@@ -619,4 +644,5 @@ public class MonopolyView extends JFrame {
     private int coordToindex(int row, int col) {     // convert 2D array to 1D array index
         return (col * 9) + row;
     }
+
 }
