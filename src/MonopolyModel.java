@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.Random;
+
 public class MonopolyModel {
     private int playerNumber = 0, currentPlayer = 0;
     private int[] currentPlayerPosition, nextPlayerPosition, playerBalance, boardPosition, landPrice = new int[32],
@@ -53,13 +55,13 @@ public class MonopolyModel {
         for(int i = 0; i < 9; i++){
             boardPosition[i] = i;
         }
-        for (int i = 9; i < 18; i++){
-            boardPosition[i] = 9 * (i - 8) - 1;
+        for (int i = 9; i < 17; i++){
+            boardPosition[i] = 9 * (i - 7) - 1;
         }
-        for (int i = 18; i < 26; i++){
-            boardPosition[i] = 80 - (i - 17);
+        for (int i = 17; i < 25; i++){
+            boardPosition[i] = 80 - (i - 16);
         }
-        for (int i = 26; i < 32; i++){
+        for (int i = 25; i < 32; i++){
             boardPosition[i] = (32 - i) * 9;
         }
 
@@ -107,7 +109,7 @@ public class MonopolyModel {
             balanceUpdate(1, currentPlayer, 2000);
             control.showGiftNotify();
         } else if (pos == 4 || pos == 12 || pos == 20 || pos == 28) {
-
+            chance();
         } else {
             if (ownership == -1) {
                 control.showBuyOption(price);
@@ -134,6 +136,32 @@ public class MonopolyModel {
             playerBalance[player] -= amount;
         }
         control.updateBalance(playerBalance);
+    }
+
+    public void chance(){
+        //generate random int
+        Random rand = new Random();
+        switch(rand.nextInt(5)) {
+            case 0:
+                balanceUpdate(1, currentPlayer, 2000);
+                control.showGiftNotify();
+                break;
+            case 1:
+                balanceUpdate(1, currentPlayer, 2000);
+                control.showGiftNotify();
+                break;
+            case 2:
+                balanceUpdate(1, currentPlayer, 2000);
+                control.showGiftNotify();
+                break;
+            case 3:
+                balanceUpdate(1, currentPlayer, 2000);
+                control.showGiftNotify();
+                break;
+            case 4:
+                balanceUpdate(1, currentPlayer, 2000);
+                control.showGiftNotify();
+        }
     }
 
     public void mainMenu(){
