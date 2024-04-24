@@ -141,27 +141,24 @@ public class MonopolyModel {
     public void chance(){
         //generate random int
         Random rand = new Random();
-        switch(rand.nextInt(5)) {
-            case 0:
-                balanceUpdate(1, currentPlayer, 2000);
-                control.showGiftNotify();
-                break;
-            case 1:
-                balanceUpdate(1, currentPlayer, 2000);
-                control.showGiftNotify();
-                break;
-            case 2:
-                balanceUpdate(1, currentPlayer, 2000);
-                control.showGiftNotify();
-                break;
-            case 3:
-                balanceUpdate(1, currentPlayer, 2000);
-                control.showGiftNotify();
-                break;
-            case 4:
-                balanceUpdate(1, currentPlayer, 2000);
-                control.showGiftNotify();
+        int random = rand.nextInt(3);
+        if (random == 0) {
+            control.showChanceNotify("You just win a $1000 lottery");
+            //add money
+            balanceUpdate(1, currentPlayer, 1000);
+        } else if (random == 1) {
+            control.showChanceNotify("You are sick \nYou have to pay your medical fee $1500");
+            //decrease money
+            balanceUpdate(2, currentPlayer, 1500);
+
+        } else {
+            //jail
+            control.showChanceNotify("You have committed crime \n Go to jail for 3 days");
+            currentPlayerPosition[currentPlayer] = 16;
+            nextPlayerPosition[currentPlayer] = 16;
+            updatePosition();
         }
+        System.out.println("Chance");
     }
 
     public void mainMenu(){

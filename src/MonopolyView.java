@@ -353,6 +353,10 @@ public class MonopolyView extends JFrame {
         JOptionPane.showMessageDialog(null, "You have get 2000 as a gift!");
     }
 
+    public void showChanceNotify(String msg){
+        JOptionPane.showMessageDialog(null, msg);
+    }
+
     public void updateOwner(int player, int pos, int[] boardPosition) {
         JPanel cell = (JPanel) boardPanel.getComponent(boardPosition[pos]);
 
