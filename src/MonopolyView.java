@@ -569,6 +569,29 @@ public class MonopolyView extends JFrame {
             }
         }
     }
+    public void updateLandOwn(int[] noLandOwn){
+        player1_land.setText("Land Own: " + noLandOwn[0]);
+        player2_land.setText("Land Own: " + noLandOwn[1]);
+        player3_land.setText("Land Own: " + noLandOwn[2]);
+        player4_land.setText("Land Own: " + noLandOwn[3]);
+
+        if (playerNo == 2){
+            player1_land.setText("Land Own: " + noLandOwn[0]);
+            player2_land.setText("Land Own: " + noLandOwn[1]);
+            player3_land.setText("Land Own: No Player" );
+            player4_land.setText("Land Own: No Player" );
+        } else if (playerNo == 3){
+            player1_land.setText("Land Own: " + noLandOwn[0]);
+            player2_land.setText("Land Own: " + noLandOwn[1]);
+            player3_land.setText("Land Own: " + noLandOwn[2]);
+            player4_land.setText("Land Own: No Player" );
+        } else if (playerNo == 4){
+            player1_land.setText("Land Own: " + noLandOwn[0]);
+            player2_land.setText("Land Own: " + noLandOwn[1]);
+            player3_land.setText("Land Own: " + noLandOwn[2]);
+            player4_land.setText("Land Own: " + noLandOwn[3]);
+        }
+    }
 
     //Image insert
     private ImageIcon createImageIcon(String path) {

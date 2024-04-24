@@ -61,4 +61,7 @@ public class MonopolyController {
     public void updateBalance(int[] balance){
         view.updateBalance(balance);
     }
+    public void updateLandOwn(int[] noLandOwn){
+        view.updateLandOwn(noLandOwn);
+    }
 }

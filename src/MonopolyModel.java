@@ -4,7 +4,7 @@ import java.util.Random;
 public class MonopolyModel {
     private int playerNumber = 0, currentPlayer = 0;
     private int[] currentPlayerPosition, nextPlayerPosition, playerBalance, boardPosition, landPrice = new int[32],
-            landOwnership = new int [32], isJail;
+            landOwnership = new int[32], isJail, noLandOwn = new int[4];
     MonopolyController control;
 
     public void setController(MonopolyController c) {
@@ -73,6 +73,7 @@ public class MonopolyModel {
 
         control.gameStart(playerNumber);
         control.updateBalance(playerBalance);
+        control.updateLandOwn(noLandOwn);
     }
 
     public void updatePosition(){
@@ -131,8 +132,20 @@ public class MonopolyModel {
                 balanceUpdate(2, currentPlayer, price*0.1);
                 balanceUpdate(1, ownership, price*0.1);
             }
-            System.out.println(landOwnership[pos]);
         }
+
+        for (int i = 0; i < landOwnership.length; i++){
+            if (landOwnership[i] == 0) {
+                noLandOwn[0]++;
+            } else if (landOwnership[i] == 1) {
+                noLandOwn[1]++;
+            } else if (landOwnership[i] == 2) {
+                noLandOwn[2]++;
+            } else if (landOwnership[i] == 3) {
+                noLandOwn[3]++;
+            }
+        }
+        control.updateLandOwn(noLandOwn);
     }
 
     public void buyLand(){
