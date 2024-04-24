@@ -120,14 +120,16 @@ public class MonopolyModel {
             control.showGiftNotify();
         } else if (pos == 4 || pos == 12 || pos == 20 || pos == 28) {
             chance();
-        } else if (pos != 16) {
+        } else if (pos != 16 && pos != 0 ) {
             if (ownership == -1) {
                 control.showBuyOption(price);
             } else if (ownership == currentPlayer) {
 
             } else {
-                control.showPayNotify(price, ownership);
-                balanceUpdate(2, currentPlayer, price);
+                System.out.println("Owner: " + ownership);
+                control.showPayNotify(price*0.1, ownership+1);
+                balanceUpdate(2, currentPlayer, price*0.1);
+                balanceUpdate(1, ownership, price*0.1);
             }
             System.out.println(landOwnership[pos]);
         }
@@ -139,7 +141,7 @@ public class MonopolyModel {
         control.updateOwner(currentPlayer, currentPlayerPosition[currentPlayer], boardPosition);
     }
 
-    public void balanceUpdate(int type, int player, int amount){
+    public void balanceUpdate(int type, int player, double amount){
         if (type == 1){
             playerBalance[player] += amount;
         } else if (type == 2){
