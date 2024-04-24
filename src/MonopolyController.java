@@ -59,6 +59,10 @@ public class MonopolyController {
         view.showChanceNotify(msg);
     }
 
+    public void showJailNotify(int days){
+        view.showJailNotify(days);
+    }
+
     public void updateOwner(int player, int pos, int[] boardPosition){
         view.updateOwner(player, pos, boardPosition);
     }

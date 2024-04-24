@@ -4,7 +4,7 @@ import java.util.Random;
 public class MonopolyModel {
     private int playerNumber = 0, currentPlayer = 0;
     private int[] currentPlayerPosition, nextPlayerPosition, playerBalance, boardPosition, landPrice = new int[32],
-            landOwnership = new int [32];
+            landOwnership = new int [32], isJail;
     MonopolyController control;
 
     public void setController(MonopolyController c) {
@@ -44,10 +44,12 @@ public class MonopolyModel {
         currentPlayerPosition = new int[playerNumber];
         nextPlayerPosition = new int[playerNumber];
         playerBalance = new int[playerNumber];
+        isJail = new int[playerNumber];
         for (int i = 0; i < currentPlayerPosition.length; i++) {
             currentPlayerPosition[i] = 0;
             nextPlayerPosition[i] = 0;
             playerBalance[i] = 10000;
+            isJail[i] = 0;
         }
 
         //Board Position Adjustment
@@ -78,13 +80,19 @@ public class MonopolyModel {
     }
 
     public void rollDice(){
-        //roll the dice
-        int dice = (int)(Math.random() * 6) + 1;
-        control.updateDice(dice);
+        if(isJail[currentPlayer] > 0){
+            isJail[currentPlayer]--;
+            control.showJailNotify(isJail[currentPlayer]+1);
+        } else {
+            //roll the dice
+            int dice = (int) (Math.random() * 6) + 1;
+            control.updateDice(dice);
 
-        nextPlayerPosition[currentPlayer] = currentPlayerPosition[currentPlayer] + dice;
-        if (nextPlayerPosition[currentPlayer] > 31){
-            nextPlayerPosition[currentPlayer] -= 32;
+
+            nextPlayerPosition[currentPlayer] = currentPlayerPosition[currentPlayer] + dice;
+            if (nextPlayerPosition[currentPlayer] > 31) {
+                nextPlayerPosition[currentPlayer] -= 32;
+            }
         }
         control.updatePosition(playerNumber, nextPlayerPosition, boardPosition);
 
@@ -110,7 +118,7 @@ public class MonopolyModel {
             control.showGiftNotify();
         } else if (pos == 4 || pos == 12 || pos == 20 || pos == 28) {
             chance();
-        } else {
+        } else if (pos != 16) {
             if (ownership == -1) {
                 control.showBuyOption(price);
             } else if (ownership == currentPlayer) {
@@ -157,6 +165,7 @@ public class MonopolyModel {
             currentPlayerPosition[currentPlayer] = 16;
             nextPlayerPosition[currentPlayer] = 16;
             updatePosition();
+            isJail[currentPlayer] = 3;
         }
         System.out.println("Chance");
     }

@@ -357,6 +357,10 @@ public class MonopolyView extends JFrame {
         JOptionPane.showMessageDialog(null, msg);
     }
 
+    public void showJailNotify(int days){
+        JOptionPane.showMessageDialog(null, "You are still in jail for " + days + " days");
+    }
+
     public void updateOwner(int player, int pos, int[] boardPosition) {
         JPanel cell = (JPanel) boardPanel.getComponent(boardPosition[pos]);
 
