@@ -514,7 +514,7 @@ public class MonopolyView extends JFrame {
     }
 
     public void showPayNotify(double price, int ownership){
-        JOptionPane.showMessageDialog(null, "You have paid " + price + " to player " + ownership);
+        JOptionPane.showMessageDialog(null, "You have paid " + price + " to player " + (ownership + 1));
     }
 
     public void showGiftNotify(){
