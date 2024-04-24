@@ -33,14 +33,6 @@ public class MonopolyController {
         view.updateDice(dice);
     }
 
-
-    public void modelMainMenu(){
-        model.mainMenu();
-    }
-    public void mainMenu(){
-        view.mainMenu();
-    }
-
     public void showBuyOption(int price){
         view.showBuyOption(price);
     }

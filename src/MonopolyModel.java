@@ -92,6 +92,8 @@ public class MonopolyModel {
             nextPlayerPosition[currentPlayer] = currentPlayerPosition[currentPlayer] + dice;
             if (nextPlayerPosition[currentPlayer] > 31) {
                 nextPlayerPosition[currentPlayer] -= 32;
+                balanceUpdate(1, currentPlayer, 2000);
+                control.showGiftNotify();
             }
         }
         control.updatePosition(playerNumber, nextPlayerPosition, boardPosition);
@@ -168,12 +170,5 @@ public class MonopolyModel {
             isJail[currentPlayer] = 3;
         }
         System.out.println("Chance");
-    }
-
-    public void mainMenu(){
-        //reset all stats
-        control.mainMenu();
-        currentPlayer = playerNumber = 0;
-
     }
 }
