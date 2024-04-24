@@ -64,4 +64,7 @@ public class MonopolyController {
     public void updateLandOwn(int[] noLandOwn){
         view.updateLandOwn(noLandOwn);
     }
+    public void updateJailDate(int[] jailDate){
+        view.updateJailDate(jailDate);
+    }
 }

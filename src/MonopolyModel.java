@@ -4,7 +4,7 @@ import java.util.Random;
 public class MonopolyModel {
     private int playerNumber = 0, currentPlayer = 0;
     private int[] currentPlayerPosition, nextPlayerPosition, playerBalance, boardPosition, landPrice = new int[32],
-            landOwnership = new int[32], isJail, noLandOwn = new int[4];
+            landOwnership = new int[32], jailDate, noLandOwn = new int[4];
     MonopolyController control;
 
     public void setController(MonopolyController c) {
@@ -44,12 +44,12 @@ public class MonopolyModel {
         currentPlayerPosition = new int[playerNumber];
         nextPlayerPosition = new int[playerNumber];
         playerBalance = new int[playerNumber];
-        isJail = new int[playerNumber];
+        jailDate = new int[playerNumber];
         for (int i = 0; i < currentPlayerPosition.length; i++) {
             currentPlayerPosition[i] = 0;
             nextPlayerPosition[i] = 0;
             playerBalance[i] = 10000;
-            isJail[i] = 0;
+            jailDate[i] = 0;
         }
 
         //Board Position Adjustment
@@ -74,6 +74,7 @@ public class MonopolyModel {
         control.gameStart(playerNumber);
         control.updateBalance(playerBalance);
         control.updateLandOwn(noLandOwn);
+        control.updateJailDate(jailDate);
     }
 
     public void updatePosition(){
@@ -81,9 +82,9 @@ public class MonopolyModel {
     }
 
     public void rollDice(){
-        if(isJail[currentPlayer] > 0){
-            isJail[currentPlayer]--;
-            control.showJailNotify(isJail[currentPlayer]+1);
+        if(jailDate[currentPlayer] > 0){
+            jailDate[currentPlayer]--;
+            control.showJailNotify(jailDate[currentPlayer]+1);
         } else {
             //roll the dice
             int dice = (int) (Math.random() * 6) + 1;
@@ -182,7 +183,8 @@ public class MonopolyModel {
             currentPlayerPosition[currentPlayer] = 16;
             nextPlayerPosition[currentPlayer] = 16;
             updatePosition();
-            isJail[currentPlayer] = 3;
+            jailDate[currentPlayer] = 3;
+            control.updateJailDate(jailDate);
         }
         System.out.println("Chance");
     }

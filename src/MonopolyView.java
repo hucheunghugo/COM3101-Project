@@ -570,11 +570,6 @@ public class MonopolyView extends JFrame {
         }
     }
     public void updateLandOwn(int[] noLandOwn){
-        player1_land.setText("Land Own: " + noLandOwn[0]);
-        player2_land.setText("Land Own: " + noLandOwn[1]);
-        player3_land.setText("Land Own: " + noLandOwn[2]);
-        player4_land.setText("Land Own: " + noLandOwn[3]);
-
         if (playerNo == 2){
             player1_land.setText("Land Own: " + noLandOwn[0]);
             player2_land.setText("Land Own: " + noLandOwn[1]);
@@ -593,6 +588,24 @@ public class MonopolyView extends JFrame {
         }
     }
 
+    public void updateJailDate(int[] jailDate){
+        if (playerNo == 2){
+            player1_jail.setText("Jail Date: " + jailDate[0]);
+            player2_jail.setText("Jail Date: " + jailDate[1]);
+            player3_jail.setText("Jail Date: No Player" );
+            player4_jail.setText("Jail Date: No Player" );
+        } else if (playerNo == 3){
+            player1_jail.setText("Jail Date: " + jailDate[0]);
+            player2_jail.setText("Jail Date: " + jailDate[1]);
+            player3_jail.setText("Jail Date: " + jailDate[2]);
+            player4_jail.setText("Jail Date: No Player" );
+        } else if (playerNo == 4){
+            player1_jail.setText("Jail Date: " + jailDate[0]);
+            player2_jail.setText("Jail Date: " + jailDate[1]);
+            player3_jail.setText("Jail Date: " + jailDate[2]);
+            player4_jail.setText("Jail Date: " + jailDate[3]);
+        }
+    }
     //Image insert
     private ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = getClass().getResource(path);
