@@ -1,4 +1,6 @@
 import java.io.*;
+import java.util.Random;
+
 public class MonopolyModel {
     private int playerNumber = 0, currentPlayer = 0;
     private int[] currentPlayerPosition, nextPlayerPosition, playerBalance, boardPosition, landPrice = new int[32],
@@ -77,10 +79,60 @@ public class MonopolyModel {
 
     public void rollDice(){
         //roll the dice
-        int dice = (int)(Math.random() * 6) + 1;
-        control.updateDice(dice);
+        Random rand = new Random();
+        int random = rand.nextInt(10);
+        if (random == 0) {
+            random = random + 1;
+        }
 
-        nextPlayerPosition[currentPlayer] = currentPlayerPosition[currentPlayer] + dice;
+        switch (random) {
+            case 1:
+                control.showDice1("images/dice01.png");
+                control.showDice2("images/dice00.png");
+                break;
+
+            case 2:
+                control.showDice1("images/dice02.png");
+                control.showDice2("images/dice00.png");
+                break;
+            case 3:
+                control.showDice1("images/dice03.png");
+                control.showDice2("images/dice00.png");
+                break;
+            case 4:
+                control.showDice1("images/dice04.png");
+                control.showDice2("images/dice00.png");
+                break;
+            case 5:
+                control.showDice1("images/dice05.png");
+                control.showDice2("images/dice00.png");
+                break;
+            case 6:
+                control.showDice1("images/dice06.png");
+                control.showDice2("images/dice00.png");
+                break;
+            case 7:
+                control.showDice1("images/dice04.png");
+                control.showDice2("images/dice03.png");
+                break;
+            case 8:
+                control.showDice1("images/dice04.png");
+                control.showDice2("images/dice04.png");
+                break;
+            case 9:
+                control.showDice1("images/dice05.png");
+                control.showDice2("images/dice04.png");
+                break;
+            case 10:
+                control.showDice1("images/dice05.png");
+                control.showDice2("images/dice05.png");
+                break;
+            default:
+                control.showDice1("images/dice00.png");
+                control.showDice2("images/dice00.png");
+        }
+
+        nextPlayerPosition[currentPlayer] = currentPlayerPosition[currentPlayer] ;
         if (nextPlayerPosition[currentPlayer] > 31){
             nextPlayerPosition[currentPlayer] -= 32;
         }

@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MonopolyView extends JFrame {
+
     JButton start_btn, exit_btn;
     JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, jLeft, infoPanel, jTop, jBottom,
             player1_infoPanel, player2_infoPanel, player3_infoPanel, player4_infoPanel;
@@ -15,20 +16,40 @@ public class MonopolyView extends JFrame {
             player1_balance, player1_land, player1_jail,
             player2_balance, player2_land, player2_jail,
             player3_balance, player3_land, player3_jail,
-            player4_balance, player4_land, player4_jail;
+            player4_balance, player4_land, player4_jail,
+            diceLabel1, diceLabel2;
+
     JTextField playerNumber;
     private MonopolyController control;
+
 
     public void setController(MonopolyController cntl) {
         this.control = cntl;
     }
 
-    public MonopolyView(){
+    public void showDice1(String path) {
+        ImageIcon icon = createImageIcon(path);
+        diceLabel1.setIcon(icon);
+        diceLabel1.revalidate();
+        diceLabel1.repaint();
+    }
+
+    public void showDice2(String path) {
+        ImageIcon icon = createImageIcon(path);
+        diceLabel2.setIcon(icon);
+        diceLabel2.revalidate();
+        diceLabel2.repaint();
+    }
+
+
+    public MonopolyView() {
         super("HSUHK COM3101 Project");
         setLayout(new BorderLayout());
         setBounds(850, 400, 350, 150);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
 
         //Main Panel Setup
         mainPanel = new JPanel(new BorderLayout());
@@ -37,7 +58,7 @@ public class MonopolyView extends JFrame {
         //Start Panel
         startPanel = new JPanel(new FlowLayout());
         startPanel.setBorder(new TitledBorder("Monopoly"));
-        startPanel.setSize( 300, 300 );
+        startPanel.setSize(300, 300);
 
         start_btn = new JButton("Start");
         start_btn.addActionListener(new ActionListener() {
@@ -68,20 +89,23 @@ public class MonopolyView extends JFrame {
 
         setVisible(true);
     }
-    public void game_start(int playernum){
+
+
+    public void game_start(int playernum) {
         this.setBounds(100, 50, 1100, 900);
         mainPanel.remove(startPanel);
         mainPanel.remove(playerNumberPanel);
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));mainPanel.setBorder(new EmptyBorder(15, 25, 15, 25));
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
+        mainPanel.setBorder(new EmptyBorder(15, 25, 15, 25));
 
         //Monopoly Board Panel
-        boardPanel = new JPanel(new GridLayout(9, 9,5,5));
+        boardPanel = new JPanel(new GridLayout(9, 9, 5, 5));
         for (int row = 0; row < 9; row++) {
             for (int col = 0; col < 9; col++) {
 
                 JPanel cell = new JPanel(new BorderLayout());
                 cell.setSize(70, 70);
-
+                setupDiceLabels();
                 if (row == 0 || row == 8 || col == 0 || col == 8) {
                     if (row == 0 && col == 0) {
                         JPanel color = new JPanel();
@@ -90,47 +114,156 @@ public class MonopolyView extends JFrame {
                         JLabel text = new JLabel("Start");
                         text.setHorizontalAlignment(SwingConstants.CENTER);
                         cell.add(text);
-                    } else if (row == 0 && col == 1 || row == 0 && col == 2 || row == 0 && col == 3) {
+                    } else if (row == 1 && col == 8 || row == 2 && col == 8 || row == 3 && col == 8) {
                         JPanel color = new JPanel();
                         color.setBackground(new Color(0, 171, 78));
                         cell.add(color, BorderLayout.NORTH);
-                        if (col == 1) {
+                        if (row == 1) {
                             JLabel text = new JLabel("<html>Kwun<br>Tong</html>");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
-                        } else if (col == 2) {
+                        } else if (row == 2) {
                             JLabel text = new JLabel("<html>Choi<br>Hung</html>");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
-                        } else if (col == 3) {
+                        } else {
                             JLabel text = new JLabel("Lok Fu");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
                         }
-                    } else if (row == 0 && col == 4) {
+                    } else if (row == 0 && col == 4 || row == 4 || row == 8 && col == 4) {
                         JPanel color = new JPanel();
                         color.setBackground(Color.white);
                         cell.add(color, BorderLayout.NORTH);
                         JLabel text = new JLabel("Chance");
                         text.setHorizontalAlignment(SwingConstants.CENTER);
                         cell.add(text);
-                    } else if (row == 0 && col == 5 || row == 0 && col == 6 || row == 0 && col == 7) {
+                    } else if (row == 8 && col == 1 || row == 8 && col == 2 || row == 8 && col == 3) {
                         JPanel color = new JPanel();
-                        color.setBackground(new Color(49, 29, 62));
+                        color.setBackground(new Color(155, 52, 235));
                         cell.add(color, BorderLayout.NORTH);
-                        if (col == 5) {
+                        if (col == 1) {
                             JLabel text = new JLabel("<html>Tsueng<br>Kwan O</html>");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
-                        } else if (col == 6) {
+                        } else if (col == 2) {
                             JLabel text = new JLabel("Hang Hau");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
-                        } else if (col == 7) {
+                        } else {
                             JLabel text = new JLabel("Po Lam");
                             text.setHorizontalAlignment(SwingConstants.CENTER);
                             cell.add(text);
                         }
+                    } else if (col == 8 && row == 5 || col == 8 && row == 6 || col == 8 && row == 7) {
+                        JPanel color = new JPanel();
+                        color.setBackground(new Color(255, 0, 0));
+                        cell.add(color, BorderLayout.NORTH);
+                        if (row == 5) {
+                            JLabel text = new JLabel("Tsuen Wan");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else if (row == 6) {
+                            JLabel text = new JLabel("Mei Foo");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else {
+                            JLabel text = new JLabel("Mong Kok");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        }
+                    } else if (row == 0 && col == 1 || row == 0 && col == 2 || row == 0 && col == 3) {
+                        JPanel color = new JPanel();
+                        color.setBackground(new Color(0, 247, 255));
+                        cell.add(color, BorderLayout.NORTH);
+                        if (col == 1) {
+                            JLabel text = new JLabel("<html>Lok Ma<br>Chau</html>");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else if (col == 2) {
+                            JLabel text = new JLabel("Fanling");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else {
+                            JLabel text = new JLabel("Sha Tin");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        }
+                    } else if (row == 0 && col == 5 || row == 0 && col == 6 || row == 0 && col == 7) {
+                        JPanel color = new JPanel();
+                        color.setBackground(new Color(166, 97, 0));
+                        cell.add(color, BorderLayout.NORTH);
+                        if (col == 5) {
+                            JLabel text = new JLabel("Tuen Mun");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else if (col == 6) {
+                            JLabel text = new JLabel("<html>To Kwa<br>Wan</html>");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else {
+                            JLabel text = new JLabel("<html>Ma On<br>Shan</html>");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        }
+                    } else if (row == 8 && col == 5 || row == 8 && col == 6 || row == 8 && col == 7) {
+                        JPanel color = new JPanel();
+                        color.setBackground(new Color(255, 149, 0));
+                        cell.add(color, BorderLayout.NORTH);
+                        if (col == 7) {
+                            JLabel text = new JLabel("Olympic");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else if (col == 6) {
+                            JLabel text = new JLabel("Tsing Yi");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else {
+                            JLabel text = new JLabel("Tung Chung");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        }
+                    } else if (col == 0 && row == 5 || col == 0 && row == 6 || col == 0 && row == 7) {
+                        JPanel color = new JPanel();
+                        color.setBackground(new Color(0, 108, 198));
+                        cell.add(color, BorderLayout.NORTH);
+                        if (row == 5) {
+                            JLabel text = new JLabel("Tai Koo");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else if (row == 6) {
+                            JLabel text = new JLabel("<html>Causeway<br>Way</html>");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else {
+                            JLabel text = new JLabel("Sheung Wan");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        }
+                    } else if (col == 0 && row == 1 || col == 0 && row == 2 || col == 0 && row == 3) {
+                        JPanel color = new JPanel();
+                        color.setBackground(new Color(176, 250, 5));
+                        cell.add(color, BorderLayout.NORTH);
+                        if (row == 1) {
+                            JLabel text = new JLabel("<html>South<br>Horizons</html>");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else if (row == 3) {
+                            JLabel text = new JLabel("Airport");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        } else {
+                            JLabel text = new JLabel("<html>Wong Chuk<br>Hang</html>");
+                            text.setHorizontalAlignment(SwingConstants.CENTER);
+                            cell.add(text);
+                        }
+                    } else if (col == 8 && row == 8) {
+                        JPanel color = new JPanel();
+                        color.setBackground(new Color(53, 53, 53));
+                        cell.add(color, BorderLayout.NORTH);
+                        JLabel text = new JLabel("Jail");
+                        text.setHorizontalAlignment(SwingConstants.CENTER);
+                        cell.add(text);
                     } else if (row == 0 && col == 8 || row == 8 && col == 0) { //top row last col
                         JPanel color = new JPanel();
                         color.setBackground(Color.white);
@@ -140,20 +273,18 @@ public class MonopolyView extends JFrame {
                         cell.add(text);
                     }
                     cell.setBackground(new Color(169, 207, 255));
-
-
                     boardPanel.add(cell);
-                } else if (row == 3 && col == 4){
+                } else if (row == 3 && col == 4) {
                     JButton roll_btn = new JButton("Roll Dice");
                     roll_btn.addActionListener(e -> control.modelRollDice());
                     cell.add(roll_btn);
                     boardPanel.add(cell);
-                } else if (row == 4 && col == 4){
+                } else if (row == 4 && col == 4) {
                     boardPanel.add(cell);
                     diceLabel.setText("0");
-                    cell.add(diceLabel,BorderLayout.CENTER);
+                    cell.add(diceLabel, BorderLayout.CENTER);
                     cell.setBorder(BorderFactory.createTitledBorder("Dice"));
-                } else if (row == 5 && col == 4){ //middle grid - back to home page
+                } else if (row == 5 && col == 4) { //middle grid - back to home page
                     JButton back_btn = new JButton("Back");
                     back_btn.addActionListener(e -> control.modelMainMenu());
                     cell.add(back_btn);
@@ -255,9 +386,30 @@ public class MonopolyView extends JFrame {
 
         control.modelUpdatePosition();
 
+
+
+    }
+    public void setupDiceLabels() {
+        diceLabel1 = new JLabel();
+        diceLabel2 = new JLabel();
+
+        diceLabel1.setIcon(createImageIcon("images/dice00.png"));
+        diceLabel2.setIcon(createImageIcon("images/dice00.png"));
+
+        // We calculate the index for 4th row, 3rd column (human-readable format)
+        int dice1Index = coordToindex(3, 3); // Grid row and column are zero-based
+        JPanel dice1Cell = (JPanel) boardPanel.getComponent(dice1Index);
+        dice1Cell.setLayout(new BorderLayout()); // Set the layout to BorderLayout
+        dice1Cell.add(diceLabel1, BorderLayout.CENTER); // Add diceLabel1 to the center
+
+        // We calculate the index for 4th row, 5th column (human-readable format)
+        int dice2Index = coordToindex(3, 5); // Grid row and column are zero-based
+        JPanel dice2Cell = (JPanel) boardPanel.getComponent(dice2Index);
+        dice2Cell.setLayout(new BorderLayout()); // Set the layout to BorderLayout
+        dice2Cell.add(diceLabel2, BorderLayout.CENTER); // Add diceLabel2 to the center
     }
 
-    public void mainMenu(){
+    public void mainMenu() {
         this.setBounds(200, 50, 350, 150);
         mainPanel.remove(boardPanel);
         mainPanel.remove(infoPanel);
@@ -266,12 +418,13 @@ public class MonopolyView extends JFrame {
         mainPanel.revalidate();
         mainPanel.repaint();
     }
-    public void updatePosition(int playerNum, int[] nextPlayerPosition, int[] boardPosition){
 
-        for (int row = 0; row < 9; row ++){
-            for(int col = 0; col < 9; col++){
+    public void updatePosition(int playerNum, int[] nextPlayerPosition, int[] boardPosition) {
+
+        for (int row = 0; row < 9; row++) {
+            for (int col = 0; col < 9; col++) {
                 if (row == 0 || row == 8 || col == 0 || col == 8) {
-                    JPanel grid = (JPanel) boardPanel.getComponent(coordToindex(row,col));
+                    JPanel grid = (JPanel) boardPanel.getComponent(coordToindex(row, col));
                     JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
                     if (southPanel == null) {
                         southPanel = new JPanel(new FlowLayout());
@@ -285,9 +438,9 @@ public class MonopolyView extends JFrame {
                 }
             }
         }
-        for (int i = 0; i < playerNum; i++){
+        for (int i = 0; i < playerNum; i++) {
 
-            if (i == 0){
+            if (i == 0) {
                 System.out.println("Next Position(Player 1): " + boardPosition[nextPlayerPosition[i]]);
 
                 JPanel grid = (JPanel) boardPanel.getComponent(boardPosition[nextPlayerPosition[i]]);
@@ -298,7 +451,7 @@ public class MonopolyView extends JFrame {
                 JLabel player1 = new JLabel(picture);
                 southPanel.add(player1);
 
-            } else if ( i == 1){
+            } else if (i == 1) {
                 System.out.println("Next Position(Player 2): " + boardPosition[nextPlayerPosition[i]]);
                 JPanel grid = (JPanel) boardPanel.getComponent(boardPosition[nextPlayerPosition[i]]);
                 JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
@@ -307,7 +460,7 @@ public class MonopolyView extends JFrame {
                 JLabel player2 = new JLabel(picture);
                 southPanel.add(player2);
 
-            } else if ( i == 2){
+            } else if (i == 2) {
                 System.out.println("Next Position(Player 3): " + boardPosition[nextPlayerPosition[i]]);
                 JPanel grid = (JPanel) boardPanel.getComponent(boardPosition[nextPlayerPosition[i]]);
                 JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
@@ -316,7 +469,7 @@ public class MonopolyView extends JFrame {
                 JLabel player3 = new JLabel(picture);
                 southPanel.add(player3);
 
-            } else if ( i == 3){
+            } else if (i == 3) {
                 System.out.println("Next Position(Player 4): " + boardPosition[nextPlayerPosition[i]]);
                 JPanel grid = (JPanel) boardPanel.getComponent(boardPosition[nextPlayerPosition[i]]);
                 JPanel southPanel = (JPanel) grid.getClientProperty("SouthPanel");
@@ -332,11 +485,11 @@ public class MonopolyView extends JFrame {
     public void updateDice(int dice) {
         JPanel grid = (JPanel) boardPanel.getComponent(60);
         diceLabel.setText(Integer.toString(dice));
-        grid.add(diceLabel,BorderLayout.CENTER); // Add without specifying layout constraint
+        grid.add(diceLabel, BorderLayout.CENTER); // Add without specifying layout constraint
         grid.revalidate(); // Ensure layout updates correctly
     }
 
-    public void showBuyOption(int price){
+    public void showBuyOption(int price) {
         // Show a JOptionPane with message, title, and message type
         int result = JOptionPane.showConfirmDialog(null, "This is an empty land. It cost: " + price + " \nDo you want to buy it?",
                 "Do you want to buy this land?", JOptionPane.YES_NO_OPTION);
@@ -349,17 +502,17 @@ public class MonopolyView extends JFrame {
         }
     }
 
-    public void updateBalance(int[] balance){
+    public void updateBalance(int[] balance) {
         player1_balance.setText("Balance: " + balance[0]);
         player2_balance.setText("Balance: " + balance[1]);
 
     }
 
-    public void showPayNotify(int price, int ownership){
+    public void showPayNotify(int price, int ownership) {
         JOptionPane.showMessageDialog(null, "You have paid " + price + " to player " + ownership);
     }
 
-    public void showGiftNotify(){
+    public void showGiftNotify() {
         JOptionPane.showMessageDialog(null, "You have get 2000 as a gift!");
     }
 
@@ -386,7 +539,10 @@ public class MonopolyView extends JFrame {
             return null;
         }
     }
+
     private int coordToindex(int row, int col) {     // convert 2D array to 1D array index
         return (col * 9) + row;
     }
+
+
 }

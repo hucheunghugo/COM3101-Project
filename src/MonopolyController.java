@@ -33,7 +33,13 @@ public class MonopolyController {
         view.updateDice(dice);
     }
 
+    public void showDice1(String path){
+        view.showDice1(path);
+    }
 
+    public void showDice2(String path){
+        view.showDice2(path);
+    }
     public void modelMainMenu(){
         model.mainMenu();
     }
