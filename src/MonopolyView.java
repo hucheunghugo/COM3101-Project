@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class MonopolyView extends JFrame {
     JButton start_btn, exit_btn;
-    JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, jLeft, infoPanel, jTop, jBottom,
+    JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, infoPanel,
             player1_infoPanel, player2_infoPanel, player3_infoPanel, player4_infoPanel;
     JLabel playerNumberLabel,
             player1_balance, player1_land, player1_jail,
@@ -78,6 +78,7 @@ public class MonopolyView extends JFrame {
         this.setBounds(300, 100, 1200, 900);
         mainPanel.remove(startPanel);
         mainPanel.remove(playerNumberPanel);
+        mainPanel.setBackground(Color.white);
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.X_AXIS));
         mainPanel.setBorder(new EmptyBorder(15, 25, 15, 25));
 
@@ -304,10 +305,17 @@ public class MonopolyView extends JFrame {
                     }
 
                     cell.setBackground(new Color(169, 207, 255));
+
                 } else if (row == 3 && col == 4){
                     JButton roll_btn = new JButton("Roll Dice");
+                    roll_btn.setAlignmentX(Component.CENTER_ALIGNMENT);
+                    roll_btn.setAlignmentY(Component.CENTER_ALIGNMENT);
+                    roll_btn.setBackground(Color.gray);
+                    roll_btn.setPreferredSize(new Dimension(70,30));
                     roll_btn.addActionListener(e -> control.modelRollDice());
+                    cell.add(Box.createVerticalStrut(30));
                     cell.add(roll_btn);
+
                 } else if (row == 4 && col == 4){
                     cell.setBorder(BorderFactory.createTitledBorder("Dice"));
                     cell.setBorder(new BevelBorder(BevelBorder.RAISED));
@@ -644,5 +652,4 @@ public class MonopolyView extends JFrame {
     private int coordToindex(int row, int col) {     // convert 2D array to 1D array index
         return (col * 9) + row;
     }
-
 }
