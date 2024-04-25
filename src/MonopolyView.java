@@ -488,13 +488,38 @@ public class MonopolyView extends JFrame {
         grid.removeAll();
         grid.setLayout(new BoxLayout(grid,BoxLayout.X_AXIS));
         ImageIcon dicepic1 = null, dicepic2 = null;
-        if (dice == 4){
-            dicepic1 = createDiceIcon("images/dice4.png");
+        if (dice == 1){
+            dicepic1 = createDiceIcon("images/dice0.png");
+            dicepic2 = createDiceIcon("images/dice1.png");
+        } else if (dice == 2){
+            dicepic1 = createDiceIcon("images/dice1.png");
+            dicepic2 = createDiceIcon("images/dice1.png");
+        } else if (dice == 3){
+            dicepic1 = createDiceIcon("images/dice1.png");
+            dicepic2 = createDiceIcon("images/dice2.png");
+        } else if (dice == 4){
+            dicepic1 = createDiceIcon("images/dice2.png");
+            dicepic2 = createDiceIcon("images/dice2.png");
+        } else if (dice == 5){
+            dicepic1 = createDiceIcon("images/dice3.png");
+            dicepic2 = createDiceIcon("images/dice2.png");
+        } else if (dice == 6){
+            dicepic1 = createDiceIcon("images/dice2.png");
+            dicepic2 = createDiceIcon("images/dice4.png");
+        } else if (dice == 7){
+            dicepic1 = createDiceIcon("images/dice2.png");
             dicepic2 = createDiceIcon("images/dice5.png");
-        } else {
-            dicepic1 = createDiceIcon("images/dice5.png");
+        } else if (dice == 8){
+            dicepic1 = createDiceIcon("images/dice4.png");
+            dicepic2 = createDiceIcon("images/dice4.png");
+        } else if (dice == 9){
+            dicepic1 = createDiceIcon("images/dice6.png");
+            dicepic2 = createDiceIcon("images/dice3.png");
+        } else if (dice == 10){
+            dicepic1 = createDiceIcon("images/dice6.png");
             dicepic2 = createDiceIcon("images/dice4.png");
         }
+
         JLabel dice1Label = new JLabel(dicepic1);
         JLabel dice2Label = new JLabel(dicepic2);
         dice1Label.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -729,7 +754,7 @@ public class MonopolyView extends JFrame {
     private ImageIcon createImageIcon(String path) {
         URL imgURL = getClass().getResource(path);
         if (imgURL != null) {
-            return new ImageIcon(new ImageIcon(imgURL).getImage().getScaledInstance(5, 5, Image.SCALE_DEFAULT));
+            return new ImageIcon(new ImageIcon(imgURL).getImage().getScaledInstance(7, 7, Image.SCALE_DEFAULT));
         } else {
             System.err.println("Couldn't find the file: " + path);
             return null;
