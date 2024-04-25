@@ -110,6 +110,7 @@ public class MonopolyModel {
                 currentPlayer++;
             }
         } while(isBankrupt[currentPlayer]);
+        control.updateRound(currentPlayer);
     }
 
     public void landCheck(){

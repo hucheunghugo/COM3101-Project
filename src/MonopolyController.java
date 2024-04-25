@@ -29,8 +29,11 @@ public class MonopolyController {
     public void modelRollDice(){
         model.rollDice();
     }
-    public void updateDice(int dice){
-        view.updateDice(dice);
+    public void updateDice(int player){
+        view.updateDice(player);
+    }
+    public void updateRound(int player){
+        view.updateRound(player);
     }
 
     public void showBuyOption(int price){

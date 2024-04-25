@@ -14,7 +14,7 @@ public class MonopolyView extends JFrame {
     JButton start_btn, exit_btn;
     JPanel startPanel, playerNumberPanel, boardPanel, mainPanel, infoPanel,
             player1_infoPanel, player2_infoPanel, player3_infoPanel, player4_infoPanel;
-    JLabel playerNumberLabel,
+    JLabel playerNumberLabel, player_round = new JLabel(),
             player1_balance, player1_land, player1_jail,
             player2_balance, player2_land, player2_jail,
             player3_balance, player3_land, player3_jail,
@@ -319,6 +319,10 @@ public class MonopolyView extends JFrame {
                 } else if (row == 4 && col == 4){
                     cell.setBorder(BorderFactory.createTitledBorder("Dice"));
                     cell.setBorder(new BevelBorder(BevelBorder.RAISED));
+                } else if (row == 5 && col == 4){
+                    cell.setBorder(BorderFactory.createTitledBorder("Round"));
+                    cell.setBorder(new BevelBorder(BevelBorder.RAISED));
+                    cell.add(player_round);
                 }
                 boardPanel.add(cell);
             }
@@ -409,6 +413,8 @@ public class MonopolyView extends JFrame {
         infoPanel.add(player3_infoPanel);
         infoPanel.add(player4_infoPanel);
 
+        updateDice(0);
+        updateRound(0);
         control.modelUpdatePosition();
 
     }
@@ -500,7 +506,19 @@ public class MonopolyView extends JFrame {
         grid.add(dice2Label); // Add without specifying layout constraint
         grid.add(Box.createVerticalStrut(2));
         grid.revalidate();
+    }
 
+    public void updateRound(int player){
+        JPanel round_grid = (JPanel) boardPanel.getComponent(49);
+        round_grid.setLayout(new BoxLayout(round_grid,BoxLayout.Y_AXIS));
+        round_grid.removeAll();
+        player++;
+        player_round.setText("Player "+player );
+        player_round.setAlignmentX(Component.CENTER_ALIGNMENT);
+        round_grid.add(Box.createVerticalStrut(25));
+        round_grid.add(player_round);
+        round_grid.revalidate();
+        round_grid.repaint();
     }
 
     public void showBuyOption(int price){
@@ -533,8 +551,6 @@ public class MonopolyView extends JFrame {
             player3_balance.setText("Balance: " + balance[2]);
             player4_balance.setText("Balance: " + balance[3]);
         }
-
-
     }
 
     public void showPayNotify(double price, int ownership){
