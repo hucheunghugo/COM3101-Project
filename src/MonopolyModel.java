@@ -126,13 +126,15 @@ public class MonopolyModel {
 
             } else {
                 System.out.println("Owner: " + ownership);
-                control.showPayNotify(price*0.1, ownership+1);
+                control.showPayNotify(price*0.1, ownership);
                 balanceUpdate(2, currentPlayer, price*0.1);
                 balanceUpdate(1, ownership, price*0.1);
             }
         }
+        landCount();
+    }
 
-
+    public void landCount(){
         int[] count = new int[4];
 
         for (int i = 0; i < landOwnership.length; i++){
@@ -196,19 +198,29 @@ public class MonopolyModel {
     public void bankruptCheck(){
         if (playerBalance[currentPlayer] < 0){
             isBankrupt[currentPlayer] = true;
-            control.showBankruptNotify();
+            for (int i = 0; i < landOwnership.length; i++){
+                if (landOwnership[i] == currentPlayer){
+                    landOwnership[i] = -1;
+                }
+            }
+            control.showBankruptNotify(currentPlayer, landOwnership, boardPosition);
+            landCount();
+            control.updateLandOwn(noLandOwn);
         }
         int bankruptCount = 0;
+        int winner = -1;
         for (int i = 0; i < isBankrupt.length; i++){
             if (isBankrupt[i]){
                 bankruptCount++;
+            } else if(!isBankrupt[i]){
+                winner = i;
             }
         }
 
         System.out.println("Bankrupt Count: " + bankruptCount);
 
         if(bankruptCount == playerNumber - 1){
-            System.out.println("Game Over");
+            control.showGameOverNotify(winner + 1);
         }
     }
 }

@@ -553,8 +553,36 @@ public class MonopolyView extends JFrame {
         JOptionPane.showMessageDialog(null, "You are still in jail for " + days + " days");
     }
 
-    public void showBankruptNotify(){
+    public void showBankruptNotify(int player, int[] landOwnership, int[] boardPosition){
         JOptionPane.showMessageDialog(null, "You are bankrupt! \n You Lose!");
+        for(int i = 0; i < landOwnership.length; i++){
+            if (landOwnership[i] == -1){
+
+                JPanel cell = (JPanel) boardPanel.getComponent(boardPosition[i]);
+
+                // Ensure that the cell panel exists
+                if (cell != null) {
+                    // Retrieve the color panel from the cell panel
+                    JPanel colorPanel = null;
+                    if (cell.getComponentCount() > 0) {
+                        colorPanel = (JPanel) cell.getComponent(0); // Assuming color panel is the first component
+                        colorPanel.removeAll();
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    public void showGameOverNotify(int winner){
+        JOptionPane.showMessageDialog(null, "Game Over! \n " +
+                "And the winner is Player" + winner);
+        JPanel grid = (JPanel) boardPanel.getComponent(31);
+        grid.removeAll();
+        grid.setLayout(new BoxLayout(grid,BoxLayout.X_AXIS));
+        grid.revalidate();
+        grid.repaint();
     }
 
     public void updateOwner(int player, int pos, int[] boardPosition) {
