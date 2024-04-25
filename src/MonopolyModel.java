@@ -5,6 +5,7 @@ public class MonopolyModel {
     private int playerNumber = 0, currentPlayer = 0;
     private int[] currentPlayerPosition, nextPlayerPosition, playerBalance, boardPosition, landPrice = new int[32],
             landOwnership = new int[32], jailDate, noLandOwn = new int[4];
+    boolean[] isBankrupt;
     MonopolyController control;
 
     public void setController(MonopolyController c) {
@@ -29,10 +30,6 @@ public class MonopolyModel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        for (int i = 0; i < landPrice.length; i++){
-            System.out.println(landPrice[i]);
-        }
         for (int i = 0; i <landOwnership.length; i++){
             landOwnership[i] = -1;
         }
@@ -45,11 +42,13 @@ public class MonopolyModel {
         nextPlayerPosition = new int[playerNumber];
         playerBalance = new int[playerNumber];
         jailDate = new int[playerNumber];
+        isBankrupt = new boolean[playerNumber];
         for (int i = 0; i < currentPlayerPosition.length; i++) {
             currentPlayerPosition[i] = 0;
             nextPlayerPosition[i] = 0;
             playerBalance[i] = 10000;
             jailDate[i] = 0;
+            isBankrupt[i] = false;
         }
 
         //Board Position Adjustment
@@ -67,10 +66,6 @@ public class MonopolyModel {
             boardPosition[i] = (32 - i) * 9;
         }
 
-        for (int i = 0; i<boardPosition.length; i++){
-            System.out.println(boardPosition[i]);
-        }
-
         control.gameStart(playerNumber);
         control.updateBalance(playerBalance);
         control.updateLandOwn(noLandOwn);
@@ -85,6 +80,7 @@ public class MonopolyModel {
         if(jailDate[currentPlayer] > 0){
             jailDate[currentPlayer]--;
             control.showJailNotify(jailDate[currentPlayer]+1);
+            control.updateJailDate(jailDate);
         } else {
             //roll the dice
             int dice = (int) (Math.random() * 10) + 1;
@@ -100,10 +96,11 @@ public class MonopolyModel {
         }
         control.updatePosition(playerNumber, nextPlayerPosition, boardPosition);
 
-        System.out.println("Roll Dice " + currentPlayerPosition[currentPlayer] + " | " +  nextPlayerPosition[currentPlayer]);
+        // System.out.println("Roll Dice " + currentPlayerPosition[currentPlayer] + " | " +  nextPlayerPosition[currentPlayer]);
         currentPlayerPosition[currentPlayer] = nextPlayerPosition[currentPlayer];
 
         landCheck();
+        bankruptCheck();
 
         if (currentPlayer == playerNumber - 1){
             currentPlayer = 0;
@@ -135,17 +132,25 @@ public class MonopolyModel {
             }
         }
 
+
+        int[] count = new int[4];
+
         for (int i = 0; i < landOwnership.length; i++){
             if (landOwnership[i] == 0) {
-                noLandOwn[0]++;
+                count[0]++;
             } else if (landOwnership[i] == 1) {
-                noLandOwn[1]++;
+                count[1]++;
             } else if (landOwnership[i] == 2) {
-                noLandOwn[2]++;
+                count[2]++;
             } else if (landOwnership[i] == 3) {
-                noLandOwn[3]++;
+                count[3]++;
             }
         }
+
+        for(int i = 0; i < 4; i++){
+            noLandOwn[i] = count[i];
+        }
+
         control.updateLandOwn(noLandOwn);
     }
 
@@ -186,6 +191,24 @@ public class MonopolyModel {
             jailDate[currentPlayer] = 3;
             control.updateJailDate(jailDate);
         }
-        System.out.println("Chance");
+    }
+
+    public void bankruptCheck(){
+        if (playerBalance[currentPlayer] < 0){
+            isBankrupt[currentPlayer] = true;
+            control.showBankruptNotify();
+        }
+        int bankruptCount = 0;
+        for (int i = 0; i < isBankrupt.length; i++){
+            if (isBankrupt[i]){
+                bankruptCount++;
+            }
+        }
+
+        System.out.println("Bankrupt Count: " + bankruptCount);
+
+        if(bankruptCount == playerNumber - 1){
+            System.out.println("Game Over");
+        }
     }
 }

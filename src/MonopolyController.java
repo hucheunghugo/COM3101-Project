@@ -54,6 +54,9 @@ public class MonopolyController {
     public void showJailNotify(int days){
         view.showJailNotify(days);
     }
+    public void showBankruptNotify(){
+        view.showBankruptNotify();
+    }
 
     public void updateOwner(int player, int pos, int[] boardPosition){
         view.updateOwner(player, pos, boardPosition);
