@@ -6,8 +6,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.net.URL;
 
 public class MonopolyView extends JFrame {
@@ -20,7 +19,7 @@ public class MonopolyView extends JFrame {
             player3_balance, player3_land, player3_jail,
             player4_balance, player4_land, player4_jail;
     JTextField playerNumber;
-    private int playerNo;
+    private int playerNo, backspaceCount;
     private MonopolyController control;
 
     public void setController(MonopolyController cntl) {
@@ -331,6 +330,8 @@ public class MonopolyView extends JFrame {
         mainPanel.add(boardPanel);
         mainPanel.revalidate();
         mainPanel.repaint();
+
+        gameEditorDetector();
 
         mainPanel.add(Box.createHorizontalStrut(50)); 
 
@@ -678,6 +679,52 @@ public class MonopolyView extends JFrame {
             player4_jail.setText("Jail Date: " + jailDate[3]);
         }
     }
+
+    public void gameEditorDetector(){
+
+        backspaceCount = 0;
+        mainPanel.setFocusable(true); // Allow the panel to receive keyboard focus
+        mainPanel.requestFocus(); // Request focus so that the panel can receive key events
+        mainPanel.requestFocusInWindow(); // Request initial focus
+        mainPanel.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                mainPanel.requestFocusInWindow(); // Request focus again
+            }
+        });
+        mainPanel.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+                    backspaceCount++;
+                    if (backspaceCount >= 5) {
+                        gameEditorFrame();
+                        backspaceCount = 0; // Reset backspace count
+                    }
+                } else {
+                    backspaceCount = 0; // Reset backspace count if other key is pressed
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+    }
+
+    private void gameEditorFrame(){
+        JFrame newFrame = new JFrame("Game Editor");
+        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Close only this frame
+        newFrame.setSize(300, 200);
+        newFrame.setLocationRelativeTo(null);
+        newFrame.setVisible(true);
+
+    }
+
     //Image insert
     private ImageIcon createImageIcon(String path) {
         URL imgURL = getClass().getResource(path);
