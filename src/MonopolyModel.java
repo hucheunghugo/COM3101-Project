@@ -102,11 +102,14 @@ public class MonopolyModel {
         landCheck();
         bankruptCheck();
 
-        if (currentPlayer == playerNumber - 1){
-            currentPlayer = 0;
-        } else {
-            currentPlayer++;
-        }
+
+        do{
+            if (currentPlayer == playerNumber - 1){
+                currentPlayer = 0;
+            } else {
+                currentPlayer++;
+            }
+        } while(isBankrupt[currentPlayer]);
     }
 
     public void landCheck(){
