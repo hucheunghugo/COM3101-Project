@@ -227,4 +227,7 @@ public class MonopolyModel {
             control.showGameOverNotify(winner + 1);
         }
     }
+    public void getData(){
+        control.getData(playerNumber,currentPlayerPosition,nextPlayerPosition,playerBalance);
+    }
 }

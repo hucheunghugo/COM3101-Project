@@ -77,4 +77,10 @@ public class MonopolyController {
     public void updateJailDate(int[] jailDate){
         view.updateJailDate(jailDate);
     }
+    public void accessData(){
+        model.getData();
+    }
+    public void getData(int playerNumber, int[] currentPlayerPosition, int[] nextPlayerPosition,int[] playerBalance){
+        view.gameEditorFrame(playerNumber, currentPlayerPosition, nextPlayerPosition, playerBalance);
+    }
 }

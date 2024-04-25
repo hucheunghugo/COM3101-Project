@@ -539,7 +539,7 @@ public class MonopolyView extends JFrame {
         round_grid.setLayout(new BoxLayout(round_grid,BoxLayout.Y_AXIS));
         round_grid.removeAll();
         player++;
-        player_round.setText("Player "+player );
+        player_round.setText("Player "+ player );
         player_round.setAlignmentX(Component.CENTER_ALIGNMENT);
         round_grid.add(Box.createVerticalStrut(25));
         round_grid.add(player_round);
@@ -727,7 +727,7 @@ public class MonopolyView extends JFrame {
                 if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
                     backspaceCount++;
                     if (backspaceCount >= 5) {
-                        gameEditorFrame();
+                        control.accessData();
                         backspaceCount = 0; // Reset backspace count
                     }
                 } else {
@@ -741,13 +741,64 @@ public class MonopolyView extends JFrame {
         });
     }
 
-    private void gameEditorFrame(){
-        JFrame newFrame = new JFrame("Game Editor");
-        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Close only this frame
-        newFrame.setSize(300, 200);
-        newFrame.setLocationRelativeTo(null);
-        newFrame.setVisible(true);
+    public void gameEditorFrame(int playerNumber, int[] currentPlayerPosition, int[] nextPlayerPosition,int[] playerBalance){
 
+        JFrame gameEditorFrame = new JFrame("Game Editor");
+        gameEditorFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Close only this frame
+        gameEditorFrame.setSize(500, 500);
+        gameEditorFrame.setLocationRelativeTo(null);
+        gameEditorFrame.setVisible(true);
+        gameEditorFrame.setResizable(false);
+
+        JPanel editorMainPanel = new JPanel();
+        editorMainPanel.setLayout(new GridLayout(8,1,5,5));
+        editorMainPanel.setBorder(new EmptyBorder(15, 25, 15, 25));
+
+        gameEditorFrame.add(editorMainPanel);
+
+
+        JPanel roundControl = new JPanel();
+        roundControl.setLayout(new BoxLayout(roundControl, BoxLayout.X_AXIS));
+        roundControl.setBorder(new BevelBorder(BevelBorder.RAISED));
+
+        JLabel round = new JLabel("Round of Players: ");
+        JComboBox<Integer> roundComboBox = new JComboBox<>();
+        roundComboBox.setMaximumSize(new Dimension(100,20));
+        for(int i = 0; i < playerNumber; i++){
+            roundComboBox.addItem(i + 1);
+        }
+
+        roundControl.add(Box.createVerticalStrut(1));
+        roundControl.add(round);
+        roundControl.add(Box.createVerticalStrut(1));
+        roundControl.add(roundComboBox);
+        roundControl.add(Box.createVerticalStrut(10));
+
+        JPanel positionPanel = new JPanel();
+        positionPanel.setLayout(new GridLayout(1,4,5,5));
+
+        JLabel p1pos = new JLabel("Player 1 Position: ");
+        JComboBox<Integer> p1posComboBox = new JComboBox<>();
+        p1posComboBox.setMaximumSize(new Dimension(100,20));
+        JLabel p2pos = new JLabel("Player 2 Position: ");
+        JComboBox<Integer> p2posComboBox = new JComboBox<>();
+        p2posComboBox.setMaximumSize(new Dimension(100,20));
+
+        for(int i = 0; i < 32; i++){
+            p1posComboBox.addItem(i);
+            p2posComboBox.addItem(i);
+        }
+        p1posComboBox.setSelectedItem(currentPlayerPosition[0]);
+        p2posComboBox.setSelectedItem(currentPlayerPosition[1]);
+
+        positionPanel.add(p1pos);
+        positionPanel.add(p1posComboBox);
+        positionPanel.add(p2pos);
+        positionPanel.add(p2posComboBox);
+
+
+        editorMainPanel.add(roundControl);
+        editorMainPanel.add(positionPanel);
     }
 
     //Image insert
