@@ -99,7 +99,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         JLabel text = new JLabel("Start");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
@@ -144,7 +144,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         if(col == 1) {
                             JLabel text = new JLabel(landName[1]);
                             JLabel price = new JLabel("Price: " + landPrice[1]);
@@ -177,7 +177,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         if(col == 5) {
                             JLabel text = new JLabel(landName[5]);
                             JLabel price = new JLabel("Price: " + landPrice[5]);
@@ -210,7 +210,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         if(col == 7) {
                             JLabel text = new JLabel(landName[17]);
                             JLabel price = new JLabel("Price: " + landPrice[17]);
@@ -243,7 +243,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         if(row == 5) {
                             JLabel text = new JLabel(landName[27]);
                             JLabel price = new JLabel("Price: " + landPrice[27]);
@@ -254,7 +254,7 @@ public class MonopolyView extends JFrame {
 
                         }else if(row == 6){
                             JLabel text = new JLabel(landName[26]);
-                            JLabel price = new JLabel("Price: " + landPrice[28]);
+                            JLabel price = new JLabel("Price: " + landPrice[26]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
                             price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
@@ -262,7 +262,7 @@ public class MonopolyView extends JFrame {
 
                         }else {
                             JLabel text = new JLabel(landName[25]);
-                            JLabel price = new JLabel("Price: " + landPrice[29]);
+                            JLabel price = new JLabel("Price: " + landPrice[25]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
                             price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
@@ -275,7 +275,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         JLabel text = new JLabel("Chance");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
@@ -288,7 +288,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         if (col == 1) {
                             JLabel text = new JLabel(landName[23]);
                             JLabel price = new JLabel("Price: " + landPrice[23]);
@@ -299,7 +299,7 @@ public class MonopolyView extends JFrame {
 
                         } else if (col == 2) {
                             JLabel text = new JLabel(landName[22]);
-                            JLabel price = new JLabel("Price: " + landPrice[24]);
+                            JLabel price = new JLabel("Price: " + landPrice[22]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
                             price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
@@ -307,7 +307,7 @@ public class MonopolyView extends JFrame {
 
                         } else {
                             JLabel text = new JLabel(landName[21]);
-                            JLabel price = new JLabel("Price: " + landPrice[25]);
+                            JLabel price = new JLabel("Price: " + landPrice[21]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
                             price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
@@ -321,7 +321,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         if(row == 1){
                             JLabel text = new JLabel(landName[31]);
                             JLabel price = new JLabel("Price: " + landPrice[31]);
@@ -353,7 +353,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         if (row == 5) {
                             JLabel text = new JLabel(landName[13]);
                             JLabel price = new JLabel("Price: " + landPrice[13]);
@@ -386,7 +386,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         JLabel text = new JLabel("Get $500");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
@@ -399,7 +399,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         JLabel text = new JLabel("Go to Jail");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
@@ -412,7 +412,7 @@ public class MonopolyView extends JFrame {
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15));
+                        cell.add(Box.createVerticalStrut(10));
                         JLabel text = new JLabel("Jail");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
@@ -623,7 +623,6 @@ public class MonopolyView extends JFrame {
             case 3 -> {
                 Random rand = new Random();
                 int random = rand.nextInt(2);
-                System.out.println("Case = " + random);
 
                 if(random == 1){
                     dicepic1 = createDiceIcon("images/dice1.png");
@@ -636,7 +635,6 @@ public class MonopolyView extends JFrame {
             case 4 -> {
                 Random rand = new Random();
                 int random = rand.nextInt(3);
-                System.out.println("Case = " + random);
                 if(random == 0){
                     dicepic1 = createDiceIcon("images/dice1.png");
                     dicepic2 = createDiceIcon("images/dice3.png");
@@ -651,7 +649,6 @@ public class MonopolyView extends JFrame {
             case 5 -> {
                 Random rand = new Random();
                 int random = rand.nextInt(3);
-                System.out.println("Case = " + random);
                 switch (random) {
                     case 0 -> {
                         dicepic1 = createDiceIcon("images/dice1.png");
@@ -674,7 +671,6 @@ public class MonopolyView extends JFrame {
             case 6 ->{
                 Random rand = new Random();
                 int random = rand.nextInt(4);
-                System.out.println("---- Case = " + random);
                 switch (random) {
                     case 0 -> {
                         dicepic1 = createDiceIcon("images/dice1.png");
@@ -701,7 +697,6 @@ public class MonopolyView extends JFrame {
             case 7 -> {
                 Random rand = new Random();
                 int random = rand.nextInt(5);
-                System.out.println("Case = " + random);
                 switch (random) {
                     case 0 -> {
                         dicepic1 = createDiceIcon("images/dice1.png");
@@ -732,7 +727,6 @@ public class MonopolyView extends JFrame {
             case 8 -> {
                 Random rand = new Random();
                 int random = rand.nextInt(5);
-                System.out.println("Case = " + random);
                 switch (random) {
                     case 0 -> {
                         dicepic1 = createDiceIcon("images/dice2.png");
@@ -759,7 +753,6 @@ public class MonopolyView extends JFrame {
             case 9 -> {
                 Random rand = new Random();
                 int random = rand.nextInt(4);
-                System.out.println("Case = " + random);
                 switch (random) {
                     case 0 -> {
                         dicepic1 = createDiceIcon("images/dice3.png");
@@ -782,7 +775,6 @@ public class MonopolyView extends JFrame {
             case 10 -> {
                 Random rand = new Random();
                 int random = rand.nextInt(3);
-                System.out.println("Case = " + random);
                 if (random == 0) {
                     dicepic1 = createDiceIcon("images/dice4.png");
                     dicepic2 = createDiceIcon("images/dice6.png");
@@ -907,8 +899,6 @@ public class MonopolyView extends JFrame {
         for(int i = 0; i < landOwnership.length; i++){
             JPanel cell = (JPanel) boardPanel.getComponent(boardPosition[i]);
             if (landOwnership[i] == -1){
-
-
                 // Ensure that the cell panel exists
                 if (cell != null) {
                     // Retrieve the color panel from the cell panel
@@ -916,8 +906,12 @@ public class MonopolyView extends JFrame {
                     if (cell.getComponentCount() > 0) {
                         colorPanel = (JPanel) cell.getComponent(0); // Assuming color panel is the first component
                         colorPanel.removeAll();
+                        colorPanel.revalidate();
+                        colorPanel.repaint();
+
                     }
                 }
+
             } else if(landOwnership[i] == 0){
 
                 // Ensure that the cell panel exists
@@ -930,7 +924,6 @@ public class MonopolyView extends JFrame {
                         if (colorPanel != null) {
                             ImageIcon picture = createImageIcon("images/player1.png");
                             if (picture != null) {
-                                System.out.println("True");
                                 // Set the new background color for the color panel
                                 JLabel playerLabel = new JLabel(picture);
 
@@ -957,7 +950,6 @@ public class MonopolyView extends JFrame {
                         if (colorPanel != null) {
                             ImageIcon picture = createImageIcon("images/player2.png");
                             if (picture != null) {
-                                System.out.println("True");
                                 // Set the new background color for the color panel
                                 JLabel playerLabel = new JLabel(picture);
 
@@ -981,7 +973,6 @@ public class MonopolyView extends JFrame {
                         if (colorPanel != null) {
                             ImageIcon picture = createImageIcon("images/player3.png");
                             if (picture != null) {
-                                System.out.println("True");
                                 // Set the new background color for the color panel
                                 JLabel playerLabel = new JLabel(picture);
 
@@ -1005,7 +996,6 @@ public class MonopolyView extends JFrame {
                         if (colorPanel != null) {
                             ImageIcon picture = createImageIcon("images/player4.png");
                             if (picture != null) {
-                                System.out.println("True");
                                 // Set the new background color for the color panel
                                 JLabel playerLabel = new JLabel(picture);
 
@@ -1167,9 +1157,9 @@ public class MonopolyView extends JFrame {
             for(int i = 0; i < 32; i++){
                 p1posComboBox.addItem(i);
                 p2posComboBox.addItem(i);
-                p3posComboBox.addItem(-1);
-                p4posComboBox.addItem(-1);
             }
+            p3posComboBox.addItem(-1);
+            p4posComboBox.addItem(-1);
             p1posComboBox.setSelectedItem(currentPlayerPosition[0]);
             p2posComboBox.setSelectedItem(currentPlayerPosition[1]);
 
@@ -1178,8 +1168,8 @@ public class MonopolyView extends JFrame {
                 p1posComboBox.addItem(i);
                 p2posComboBox.addItem(i);
                 p3posComboBox.addItem(i);
-                p4posComboBox.addItem(-1);
             }
+            p4posComboBox.addItem(-1);
             p1posComboBox.setSelectedItem(currentPlayerPosition[0]);
             p2posComboBox.setSelectedItem(currentPlayerPosition[1]);
             p3posComboBox.setSelectedItem(currentPlayerPosition[2]);
@@ -1995,7 +1985,7 @@ public class MonopolyView extends JFrame {
         p8land2ComboBox.addItem(2);
         p8land3ComboBox.addItem(2);
 
-        if (playerNumber > 2) {
+        if (playerNumber == 3) {
             p1land1ComboBox.addItem(3);
             p1land2ComboBox.addItem(3);
             p1land3ComboBox.addItem(3);
@@ -2020,7 +2010,32 @@ public class MonopolyView extends JFrame {
             p8land1ComboBox.addItem(3);
             p8land2ComboBox.addItem(3);
             p8land3ComboBox.addItem(3);
-        } else if (playerNumber > 3){
+        } else if (playerNumber == 4){
+            p1land1ComboBox.addItem(3);
+            p1land2ComboBox.addItem(3);
+            p1land3ComboBox.addItem(3);
+            p2land1ComboBox.addItem(3);
+            p2land2ComboBox.addItem(3);
+            p2land3ComboBox.addItem(3);
+            p3land1ComboBox.addItem(3);
+            p3land2ComboBox.addItem(3);
+            p3land3ComboBox.addItem(3);
+            p4land1ComboBox.addItem(3);
+            p4land2ComboBox.addItem(3);
+            p4land3ComboBox.addItem(3);
+            p5land1ComboBox.addItem(3);
+            p5land2ComboBox.addItem(3);
+            p5land3ComboBox.addItem(3);
+            p6land1ComboBox.addItem(3);
+            p6land2ComboBox.addItem(3);
+            p6land3ComboBox.addItem(3);
+            p7land1ComboBox.addItem(3);
+            p7land2ComboBox.addItem(3);
+            p7land3ComboBox.addItem(3);
+            p8land1ComboBox.addItem(3);
+            p8land2ComboBox.addItem(3);
+            p8land3ComboBox.addItem(3);
+
             p1land1ComboBox.addItem(4);
             p1land2ComboBox.addItem(4);
             p1land3ComboBox.addItem(4);
@@ -2052,7 +2067,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(1, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(1, selectedPlayer - 1);
+                } else {
+                    control.editOwner(1, -1);
+                }
             }
         });
         p1land2ComboBox.addActionListener(new ActionListener() {
@@ -2060,7 +2079,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(2, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(2, selectedPlayer - 1);
+                } else {
+                    control.editOwner(2, -1);
+                }
             }
         });
         p1land3ComboBox.addActionListener(new ActionListener() {
@@ -2068,7 +2091,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(3, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(3, selectedPlayer - 1);
+                } else {
+                    control.editOwner(3, -1);
+                }
             }
         });
         p2land1ComboBox.addActionListener(new ActionListener() {
@@ -2076,7 +2103,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(5, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(5, selectedPlayer - 1);
+                } else {
+                    control.editOwner(5, -1);
+                }
             }
         });
         p2land2ComboBox.addActionListener(new ActionListener() {
@@ -2084,7 +2115,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(6, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(6, selectedPlayer - 1);
+                } else {
+                    control.editOwner(6, -1);
+                }
             }
         });
         p2land3ComboBox.addActionListener(new ActionListener() {
@@ -2092,7 +2127,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(7, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(7, selectedPlayer - 1);
+                } else {
+                    control.editOwner(7, -1);
+                }
             }
         });
         p3land1ComboBox.addActionListener(new ActionListener() {
@@ -2100,7 +2139,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(9, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(9, selectedPlayer - 1);
+                } else {
+                    control.editOwner(9, -1);
+                }
             }
         });
         p3land2ComboBox.addActionListener(new ActionListener() {
@@ -2108,7 +2151,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(10, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(10, selectedPlayer - 1);
+                } else {
+                    control.editOwner(10, -1);
+                }
             }
         });
         p3land3ComboBox.addActionListener(new ActionListener() {
@@ -2116,7 +2163,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(11, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(11, selectedPlayer - 1);
+                } else {
+                    control.editOwner(11, -1);
+                }
             }
         });
         p4land1ComboBox.addActionListener(new ActionListener() {
@@ -2124,7 +2175,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(13, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(13, selectedPlayer - 1);
+                } else {
+                    control.editOwner(13, -1);
+                }
             }
         });
         p4land2ComboBox.addActionListener(new ActionListener() {
@@ -2132,7 +2187,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(14, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(14, selectedPlayer - 1);
+                } else {
+                    control.editOwner(14, -1);
+                }
             }
         });
         p4land3ComboBox.addActionListener(new ActionListener() {
@@ -2140,7 +2199,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(15, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(15, selectedPlayer - 1);
+                } else {
+                    control.editOwner(15, -1);
+                }
             }
         });
         p5land1ComboBox.addActionListener(new ActionListener() {
@@ -2148,7 +2211,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(17, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(17, selectedPlayer - 1);
+                } else {
+                    control.editOwner(17, -1);
+                }
             }
         });
         p5land2ComboBox.addActionListener(new ActionListener() {
@@ -2156,7 +2223,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(18, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(18, selectedPlayer - 1);
+                } else {
+                    control.editOwner(18, -1);
+                }
             }
         });
         p5land3ComboBox.addActionListener(new ActionListener() {
@@ -2164,7 +2235,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(19, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(19, selectedPlayer - 1);
+                } else {
+                    control.editOwner(19, -1);
+                }
             }
         });
         p6land1ComboBox.addActionListener(new ActionListener() {
@@ -2172,7 +2247,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(21, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(3, selectedPlayer - 1);
+                } else {
+                    control.editOwner(21, -1);
+                }
             }
         });
         p6land2ComboBox.addActionListener(new ActionListener() {
@@ -2180,7 +2259,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(22, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(22, selectedPlayer - 1);
+                } else {
+                    control.editOwner(22, -1);
+                }
             }
         });
         p6land3ComboBox.addActionListener(new ActionListener() {
@@ -2188,7 +2271,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(23, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(23, selectedPlayer - 1);
+                } else {
+                    control.editOwner(23, -1);
+                }
             }
         });
         p7land1ComboBox.addActionListener(new ActionListener() {
@@ -2196,7 +2283,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(25, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(25, selectedPlayer - 1);
+                } else {
+                    control.editOwner(25, -1);
+                }
             }
         });
         p7land2ComboBox.addActionListener(new ActionListener() {
@@ -2204,7 +2295,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(26, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(26, selectedPlayer - 1);
+                } else {
+                    control.editOwner(26, -1);
+                }
             }
         });
         p7land3ComboBox.addActionListener(new ActionListener() {
@@ -2212,7 +2307,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(27, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(27, selectedPlayer - 1);
+                } else {
+                    control.editOwner(27, -1);
+                }
             }
         });
         p8land1ComboBox.addActionListener(new ActionListener() {
@@ -2220,7 +2319,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(29, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(29, selectedPlayer - 1);
+                } else {
+                    control.editOwner(29, -1);
+                }
             }
         });
         p8land2ComboBox.addActionListener(new ActionListener() {
@@ -2228,7 +2331,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(30, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(30, selectedPlayer - 1);
+                } else {
+                    control.editOwner(30, -1);
+                }
             }
         });
         p8land3ComboBox.addActionListener(new ActionListener() {
@@ -2236,7 +2343,11 @@ public class MonopolyView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
-                control.editOwner(31, selectedPlayer - 1);
+                if (selectedPlayer != -1) {
+                    control.editOwner(31, selectedPlayer - 1);
+                } else {
+                    control.editOwner(31, -1);
+                }
             }
         });
 

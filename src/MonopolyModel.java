@@ -98,7 +98,6 @@ public class MonopolyModel {
         }
         control.updatePosition(playerNumber, nextPlayerPosition, boardPosition);
 
-        // System.out.println("Roll Dice " + currentPlayerPosition[currentPlayer] + " | " +  nextPlayerPosition[currentPlayer]);
         currentPlayerPosition[currentPlayer] = nextPlayerPosition[currentPlayer];
 
         landCheck();
@@ -138,7 +137,6 @@ public class MonopolyModel {
             } else if (ownership == currentPlayer) {
 
             } else {
-                System.out.println("Owner: " + ownership);
                 control.showPayNotify(price*0.1, ownership);
                 balanceUpdate(2, currentPlayer, price*0.1);
                 balanceUpdate(1, ownership, price*0.1);
@@ -189,7 +187,7 @@ public class MonopolyModel {
     public void chance(){
         //generate random int
         Random rand = new Random();
-        int random = rand.nextInt(3);
+        int random = rand.nextInt(9);
         if (random == 0) {
             control.showChanceNotify("You just win a $1000 lottery");
             //add money
@@ -199,7 +197,23 @@ public class MonopolyModel {
             //decrease money
             balanceUpdate(2, currentPlayer, 1500);
 
-        } else {
+        } else if (random == 2) {
+            control.showChanceNotify("You just win a $200 lottery");
+            //add money
+            balanceUpdate(1, currentPlayer, 200);
+        } else if (random == 3) {
+            control.showChanceNotify("Insurance Payment $500");
+            //add money
+            balanceUpdate(1, currentPlayer, 500);
+        } else if (random == 4) {
+            //jail
+            control.showChanceNotify("You have committed crime \n Go to jail for 1 days");
+            currentPlayerPosition[currentPlayer] = 16;
+            nextPlayerPosition[currentPlayer] = 16;
+            updatePosition();
+            jailDate[currentPlayer] = 1;
+            control.updateJailDate(jailDate);
+        } else if(random == 5) {
             //jail
             control.showChanceNotify("You have committed crime \n Go to jail for 3 days");
             currentPlayerPosition[currentPlayer] = 16;
@@ -207,6 +221,31 @@ public class MonopolyModel {
             updatePosition();
             jailDate[currentPlayer] = 3;
             control.updateJailDate(jailDate);
+        } else if(random == 7) {
+            //Tornado
+            control.showChanceNotify("You got blow up by tornado \n" +
+                    "Teleport to random land");
+
+            int randomPos = rand.nextInt(32);
+
+            currentPlayerPosition[currentPlayer] = randomPos;
+            nextPlayerPosition[currentPlayer] = randomPos;
+            updatePosition();
+
+            landCheck();
+            bankruptCheck();
+        } else if(random == 8) {
+            int count = 0;
+            for(int i = 0; i < landOwnership.length; i++){
+                if (landOwnership[i] == currentPlayer){
+                    landOwnership[i] = -1;
+                    count++;
+                }
+            }
+            if(count > 5){
+                control.showChanceNotify("You have to pay $500 for each land you own");
+                balanceUpdate(2, currentPlayer, 500 * count);
+            }
         }
     }
 
@@ -232,8 +271,6 @@ public class MonopolyModel {
             }
         }
 
-        System.out.println("Bankrupt Count: " + bankruptCount);
-
         if(bankruptCount == playerNumber - 1){
             control.showGameOverNotify(winner + 1);
         }
@@ -244,7 +281,6 @@ public class MonopolyModel {
 
     public void editCurrentPlayer(int player){
         currentPlayer = player;
-        System.out.println(player);
         control.updateRound(currentPlayer);
     }
 
@@ -271,11 +307,10 @@ public class MonopolyModel {
 
     public void editOwner(int pos, int player){
         landOwnership[pos] = player;
-        System.out.println("Position: "+ pos);
-        System.out.println("Player: " + player);
-        for(int i = 0; i < landOwnership.length; i++){
-            System.out.println("Land: " + landOwnership[i]);
+        if (player == -1) {
+            landOwnership[pos] = -1;
         }
+
         control.updateOwner(boardPosition, landOwnership);
     }
 
