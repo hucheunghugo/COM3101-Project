@@ -118,9 +118,16 @@ public class MonopolyModel {
         int price = landPrice[currentPlayerPosition[currentPlayer]];
         int pos = currentPlayerPosition[currentPlayer];
 
-        if (pos == 8 || pos == 24){
-            balanceUpdate(1, currentPlayer, 2000);
+        if (pos == 8){
+            balanceUpdate(1, currentPlayer, 500);
             control.showGiftNotify();
+        } else if(pos == 24) {
+            control.showChanceNotify("Get caught by police \n Go to jail for 3 days");
+            currentPlayerPosition[currentPlayer] = 16;
+            nextPlayerPosition[currentPlayer] = 16;
+            updatePosition();
+            jailDate[currentPlayer] = 3;
+            control.updateJailDate(jailDate);
         } else if (pos == 4 || pos == 12 || pos == 20 || pos == 28) {
             chance();
         } else if (pos != 16 && pos != 0 ) {
@@ -163,7 +170,7 @@ public class MonopolyModel {
     public void buyLand(){
         landOwnership[currentPlayerPosition[currentPlayer]] = currentPlayer;
         balanceUpdate(2,currentPlayer, landPrice[currentPlayerPosition[currentPlayer]]);
-        control.updateOwner(currentPlayer, currentPlayerPosition[currentPlayer], boardPosition);
+        control.updateOwner(boardPosition, landOwnership);
     }
 
     public void balanceUpdate(int type, int player, double amount){
@@ -228,6 +235,43 @@ public class MonopolyModel {
         }
     }
     public void getData(){
-        control.getData(playerNumber,currentPlayerPosition,nextPlayerPosition,playerBalance);
+        control.getData(playerNumber,currentPlayerPosition,playerBalance, jailDate, landOwnership);
+    }
+
+    public void editCurrentPlayer(int player){
+        currentPlayer = player;
+        System.out.println(player);
+        control.updateRound(currentPlayer);
+    }
+
+    public void editPosition(int pos, int player){
+        currentPlayerPosition[player] = pos;
+        nextPlayerPosition[player] = pos;
+
+        updatePosition();
+
+        landCheck();
+        bankruptCheck();
+    }
+
+    public void editBalance(int amount, int player){
+        playerBalance[player] = amount;
+        control.updateBalance(playerBalance);
+        bankruptCheck();
+    }
+
+    public void editJail(int days, int player){
+        jailDate[player] = days;
+        control.updateJailDate(jailDate);
+    }
+
+    public void editOwner(int pos, int player){
+        landOwnership[pos] = player;
+        System.out.println("Position: "+ pos);
+        System.out.println("Player: " + player);
+        for(int i = 0; i < landOwnership.length; i++){
+            System.out.println("Land: " + landOwnership[i]);
+        }
+        control.updateOwner(boardPosition, landOwnership);
     }
 }

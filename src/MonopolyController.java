@@ -1,6 +1,7 @@
 public class MonopolyController {
     MonopolyModel model;
     MonopolyView view;
+
     //
     // Methods for setting up the model and the view
     //	
@@ -12,75 +13,107 @@ public class MonopolyController {
         this.view = v;
     }
 
-    public void modelGameStart(int playernum){
+    public void modelGameStart(int playernum) {
         model.gameStart(playernum);
     }
-    public void gameStart(int playernum){
+
+    public void gameStart(int playernum) {
         view.game_start(playernum);
     }
 
-    public void modelUpdatePosition(){
+    public void modelUpdatePosition() {
         model.updatePosition();
     }
-    public void updatePosition(int player, int[] nextPlayerPosition, int[] boardPosition){
-        view.updatePosition(player,  nextPlayerPosition, boardPosition);
+
+    public void updatePosition(int player, int[] nextPlayerPosition, int[] boardPosition) {
+        view.updatePosition(player, nextPlayerPosition, boardPosition);
     }
 
-    public void modelRollDice(){
+    public void modelRollDice() {
         model.rollDice();
     }
-    public void updateDice(int player){
+
+    public void updateDice(int player) {
         view.updateDice(player);
     }
-    public void updateRound(int player){
+
+    public void updateRound(int player) {
         view.updateRound(player);
     }
 
-    public void showBuyOption(int price){
+    public void showBuyOption(int price) {
         view.showBuyOption(price);
     }
 
-    public void showPayNotify(double price, int ownership){
+    public void showPayNotify(double price, int ownership) {
         view.showPayNotify(price, ownership);
     }
-    public void buyLand(){
+
+    public void buyLand() {
         model.buyLand();
     }
-    public void showGiftNotify(){
+
+    public void showGiftNotify() {
         view.showGiftNotify();
     }
 
-    public void showChanceNotify(String msg){
+    public void showChanceNotify(String msg) {
         view.showChanceNotify(msg);
     }
 
-    public void showJailNotify(int days){
+    public void showJailNotify(int days) {
         view.showJailNotify(days);
     }
-    public void showBankruptNotify(int player, int[] landOwnership, int[] boardPosition){
+
+    public void showBankruptNotify(int player, int[] landOwnership, int[] boardPosition) {
         view.showBankruptNotify(player, landOwnership, boardPosition);
     }
 
-    public void showGameOverNotify(int winner){
+    public void showGameOverNotify(int winner) {
         view.showGameOverNotify(winner);
     }
 
-    public void updateOwner(int player, int pos, int[] boardPosition){
-        view.updateOwner(player, pos, boardPosition);
+    public void updateOwner(int[] boardPosition, int[] landOwner) {
+        view.updateOwner(boardPosition, landOwner);
     }
-    public void updateBalance(int[] balance){
+
+    public void updateBalance(int[] balance) {
         view.updateBalance(balance);
     }
-    public void updateLandOwn(int[] noLandOwn){
+
+    public void updateLandOwn(int[] noLandOwn) {
         view.updateLandOwn(noLandOwn);
     }
-    public void updateJailDate(int[] jailDate){
+
+    public void updateJailDate(int[] jailDate) {
         view.updateJailDate(jailDate);
     }
-    public void accessData(){
+
+    public void accessData() {
         model.getData();
     }
-    public void getData(int playerNumber, int[] currentPlayerPosition, int[] nextPlayerPosition,int[] playerBalance){
-        view.gameEditorFrame(playerNumber, currentPlayerPosition, nextPlayerPosition, playerBalance);
+
+    public void getData(int playerNumber, int[] currentPlayerPosition, int[] playerBalance, int[] jailDate, int[] landOwnership) {
+        view.gameEditorFrame(playerNumber, currentPlayerPosition, playerBalance, jailDate, landOwnership);
+    }
+
+    public void editCurrentPlayer(int player) {
+        model.editCurrentPlayer(player);
+    }
+
+    public void editPosition(int pos, int player) {
+        model.editPosition(pos, player);
+    }
+
+    public void editBalance(int balance, int player) {
+        model.editBalance(balance, player);
+    }
+
+    public void editJail(int days, int player) {
+        model.editJail(days, player);
+    }
+
+    public void editOwner(int pos, int player) {
+        model.editOwner(pos, player);
     }
 }
