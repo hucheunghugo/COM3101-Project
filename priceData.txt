@@ -1,24 +1,24 @@
-1,1000
-2,1000
-3,1000
-5,1500
-6,1500
-7,1500
-9,1800
-10,1800
-11,1800
-13,2100
-14,2100
-15,2100
-17,2300
-18,2300
-19,2300
-21,2700
-22,2700
-23,2700
-25,2900
-26,2900
-27,3100
-29,3300
-30,3500
-31,3500
+1,1000,Lok Ma Chau
+2,1000,Fan Ling
+3,1000,Sha Tin
+5,1500,Tuen Mun
+6,1500,To Kwa Wan
+7,1500,Ma On Shan
+9,1800,Kwun Tong
+10,1800,Choi Hung
+11,1800,Lok Fu
+13,2100,Tsuen Wan
+14,2100,Mei Foo
+15,2100,Mong Kok
+17,2300,Olympic
+18,2300,Tsing Yi
+19,2300,Tung Chung
+21,2700,Po Lam
+22,2700,Hang Hau
+23,2700,Tsueng Kwan O
+25,2900,Sheung Wan
+26,2900,Causeway Bay
+27,3100,Tai Koo
+29,3300,Airport
+30,3500,Wong Chuk Hang
+31,3500,South Horizons

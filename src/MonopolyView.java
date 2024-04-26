@@ -74,7 +74,7 @@ public class MonopolyView extends JFrame {
 
         setVisible(true);
     }
-    public void game_start(int playernum){
+    public void game_start(int playernum, int[] landPrice, String[] landName){
         this.setBounds(300, 100, 1200, 900);
         mainPanel.remove(startPanel);
         mainPanel.remove(playerNumberPanel);
@@ -103,25 +103,39 @@ public class MonopolyView extends JFrame {
                         JLabel text = new JLabel("Start");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
+
                     } else if (row == 1 && col == 8 || row == 2 && col == 8 || row == 3 && col == 8) {
                         JPanel color = new JPanel();
                         color.setBackground(new Color(0, 171, 78));
                         color.setMaximumSize(new Dimension(100,100));
                         color.setBorder(new BevelBorder(BevelBorder.LOWERED));
                         cell.add(color);
-                        cell.add(Box.createVerticalStrut(15)); 
+                        cell.add(Box.createVerticalStrut(10));
                         if (row == 1) {
-                            JLabel text = new JLabel("Kwun Tong");
+                            JLabel text = new JLabel(landName[9]);
+                            JLabel price = new JLabel("Price: " + landPrice[9]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+                            cell.add(price);
+
                         } else if (row == 2) {
-                            JLabel text = new JLabel("Choi Hung");
+                            JLabel text = new JLabel(landName[10]);
+                            JLabel price = new JLabel("Price: " + landPrice[10]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         } else {
-                            JLabel text = new JLabel("Lok Fu");
+                            JLabel text = new JLabel(landName[11]);
+                            JLabel price = new JLabel("Price: " + landPrice[11]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }
 
                     } else if(row == 0 && col == 1 || row == 0 && col == 2 || row == 0 && col == 3) {
@@ -132,17 +146,29 @@ public class MonopolyView extends JFrame {
                         cell.add(color);
                         cell.add(Box.createVerticalStrut(15));
                         if(col == 1) {
-                            JLabel text = new JLabel("Lok Ma Chau");
+                            JLabel text = new JLabel(landName[1]);
+                            JLabel price = new JLabel("Price: " + landPrice[1]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }else if(col == 2) {
-                            JLabel text = new JLabel("Fan Ling");
+                            JLabel text = new JLabel(landName[2]);
+                            JLabel price = new JLabel("Price: " + landPrice[2]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }else {
-                            JLabel text = new JLabel("Sha Tin");
+                            JLabel text = new JLabel(landName[3]);
+                            JLabel price = new JLabel("Price: " + landPrice[3]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }
 
                     } else if(row == 0 && col == 5 || row == 0 && col == 6 || row == 0 && col == 7){
@@ -153,17 +179,29 @@ public class MonopolyView extends JFrame {
                         cell.add(color);
                         cell.add(Box.createVerticalStrut(15));
                         if(col == 5) {
-                            JLabel text = new JLabel("Tuen Mun");
+                            JLabel text = new JLabel(landName[5]);
+                            JLabel price = new JLabel("Price: " + landPrice[5]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }else if(col == 6) {
-                            JLabel text = new JLabel("To Kwa Wan");
+                            JLabel text = new JLabel(landName[6]);
+                            JLabel price = new JLabel("Price: " + landPrice[6]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }else {
-                            JLabel text = new JLabel("Ma On Shan");
+                            JLabel text = new JLabel(landName[7]);
+                            JLabel price = new JLabel("Price: " + landPrice[7]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }
 
                     } else if(row == 8 && col == 5 || row == 8 && col == 6 || row == 8 && col == 7){
@@ -174,17 +212,29 @@ public class MonopolyView extends JFrame {
                         cell.add(color);
                         cell.add(Box.createVerticalStrut(15));
                         if(col == 7) {
-                            JLabel text = new JLabel("Olympic");
+                            JLabel text = new JLabel(landName[17]);
+                            JLabel price = new JLabel("Price: " + landPrice[17]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }else if(col == 6){
-                            JLabel text = new JLabel("Tsing Yi");
+                            JLabel text = new JLabel(landName[18]);
+                            JLabel price = new JLabel("Price: " + landPrice[18]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }else{
-                            JLabel text = new JLabel("Tung Chung");
+                            JLabel text = new JLabel(landName[19]);
+                            JLabel price = new JLabel("Price: " + landPrice[19]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }
 
                     } else if(col == 0 && row == 5 || col == 0 && row == 6 || col == 0 && row == 7) {
@@ -195,17 +245,29 @@ public class MonopolyView extends JFrame {
                         cell.add(color);
                         cell.add(Box.createVerticalStrut(15));
                         if(row == 5) {
-                            JLabel text = new JLabel("Tai Koo");
+                            JLabel text = new JLabel(landName[27]);
+                            JLabel price = new JLabel("Price: " + landPrice[27]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }else if(row == 6){
-                            JLabel text = new JLabel("Causeway Bay");
+                            JLabel text = new JLabel(landName[26]);
+                            JLabel price = new JLabel("Price: " + landPrice[28]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }else {
-                            JLabel text = new JLabel("Sheung Wan");
+                            JLabel text = new JLabel(landName[25]);
+                            JLabel price = new JLabel("Price: " + landPrice[29]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }
                     } else if (row == 0 && col == 4 || row == 8 && col == 4 || row == 4 && col == 8 || row == 4 && col == 0) {
                         JPanel color = new JPanel();
@@ -218,6 +280,8 @@ public class MonopolyView extends JFrame {
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
 
+
+
                     } else if (row == 8 && col == 1 || row == 8 && col == 2 || row == 8 && col == 3) {
                         JPanel color = new JPanel();
                         color.setBackground(new Color(155, 52, 235));
@@ -226,17 +290,29 @@ public class MonopolyView extends JFrame {
                         cell.add(color);
                         cell.add(Box.createVerticalStrut(15));
                         if (col == 1) {
-                            JLabel text = new JLabel("Tsueng Kwan O");
+                            JLabel text = new JLabel(landName[23]);
+                            JLabel price = new JLabel("Price: " + landPrice[23]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         } else if (col == 2) {
-                            JLabel text = new JLabel("Hang Hau");
+                            JLabel text = new JLabel(landName[22]);
+                            JLabel price = new JLabel("Price: " + landPrice[24]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         } else {
-                            JLabel text = new JLabel("Po Lam");
+                            JLabel text = new JLabel(landName[21]);
+                            JLabel price = new JLabel("Price: " + landPrice[25]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }
 
                     } else if(col == 0 && row == 1 || col == 0 && row == 2 || col == 0 && row == 3){
@@ -247,17 +323,29 @@ public class MonopolyView extends JFrame {
                         cell.add(color);
                         cell.add(Box.createVerticalStrut(15));
                         if(row == 1){
-                            JLabel text = new JLabel("South Horizons");
+                            JLabel text = new JLabel(landName[31]);
+                            JLabel price = new JLabel("Price: " + landPrice[31]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }else if(row == 3){
-                            JLabel text = new JLabel("Airport");
+                            JLabel text = new JLabel(landName[29]);
+                            JLabel price = new JLabel("Price: " + landPrice[29]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }else{
-                            JLabel text = new JLabel("Wong Chuk Hang");
+                            JLabel text = new JLabel(landName[30]);
+                            JLabel price = new JLabel("Price: " + landPrice[30]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }
                     } else if(col == 8 && row == 5 || col == 8 && row == 6 || col == 8 && row == 7) {
                         JPanel color = new JPanel();
@@ -267,17 +355,29 @@ public class MonopolyView extends JFrame {
                         cell.add(color);
                         cell.add(Box.createVerticalStrut(15));
                         if (row == 5) {
-                            JLabel text = new JLabel("Tsuen Wan");
+                            JLabel text = new JLabel(landName[13]);
+                            JLabel price = new JLabel("Price: " + landPrice[13]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         } else if (row == 6) {
-                            JLabel text = new JLabel("Mei Foo");
+                            JLabel text = new JLabel(landName[14]);
+                            JLabel price = new JLabel("Price: " + landPrice[14]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         } else {
-                            JLabel text = new JLabel("Mong Kok");
+                            JLabel text = new JLabel(landName[15]);
+                            JLabel price = new JLabel("Price: " + landPrice[15]);
                             text.setAlignmentX(Component.CENTER_ALIGNMENT);
+                            price.setAlignmentX(Component.CENTER_ALIGNMENT);
                             cell.add(text);
+                            cell.add(price);
+
                         }
 
                     } else if (row == 0 && col == 8) { //top row last col
@@ -290,6 +390,8 @@ public class MonopolyView extends JFrame {
                         JLabel text = new JLabel("Get $500");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
+                            
+
 
                     }else if(row == 8 && col == 0) {
                         JPanel color = new JPanel();
@@ -301,6 +403,8 @@ public class MonopolyView extends JFrame {
                         JLabel text = new JLabel("Go to Jail");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
+                            
+
 
                     } else if(row == 8 && col ==8){
                         JPanel color = new JPanel();
@@ -312,6 +416,8 @@ public class MonopolyView extends JFrame {
                         JLabel text = new JLabel("Jail");
                         text.setAlignmentX(Component.CENTER_ALIGNMENT);
                         cell.add(text);
+                            
+
 
                     }
 
@@ -355,7 +461,7 @@ public class MonopolyView extends JFrame {
         //Player Info
         player1_infoPanel = new JPanel();
         player1_infoPanel = new JPanel(new GridLayout(3, 1)); // GridLayout with 2 rows and 1 column
-        player1_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 1"));
+        player1_infoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black,3), "Player 1"));
         player1_infoPanel.setPreferredSize(new Dimension(500, 120));
 
         //Player 1
@@ -372,7 +478,7 @@ public class MonopolyView extends JFrame {
         //Player 2
         player2_infoPanel = new JPanel();
         player2_infoPanel = new JPanel(new GridLayout(3, 1)); // GridLayout with 2 rows and 1 column
-        player2_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 2"));
+        player2_infoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.white,3), "Player 2"));
         player2_infoPanel.setPreferredSize(new Dimension(500, 120));
 
         player2_balance = new JLabel("Balance:　");
@@ -388,8 +494,8 @@ public class MonopolyView extends JFrame {
 
         //Player 3
         player3_infoPanel = new JPanel();
-        player3_infoPanel = new JPanel(new GridLayout(3, 1)); // GridLayout with 2 rows and 1 column
-        player3_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 3"));
+        player3_infoPanel = new JPanel(new GridLayout(3, 1)); // GridLayout with 2 rows and 1 columncolumn
+        player3_infoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.yellow,3), "Player 3"));
         player3_infoPanel.setPreferredSize(new Dimension(500, 120));
 
         player3_balance = new JLabel("Balance:　");
@@ -405,8 +511,8 @@ public class MonopolyView extends JFrame {
 
         //Player 4
         player4_infoPanel = new JPanel();
-        player4_infoPanel = new JPanel(new GridLayout(3, 1)); // GridLayout with 2 rows and 1 column
-        player4_infoPanel.setBorder(BorderFactory.createTitledBorder("Player 4"));
+        player4_infoPanel = new JPanel(new GridLayout(3, 1)); // GridLayout with 2 rows and 1 columncolumn
+        player4_infoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.red,3), "Player 4"));
         player4_infoPanel.setPreferredSize(new Dimension(500, 120));
 
         player4_balance = new JLabel("Balance:　");
@@ -420,6 +526,11 @@ public class MonopolyView extends JFrame {
         player4_infoPanel.add(player4_land);
         player4_infoPanel.add(player4_jail);
 
+
+        player1_infoPanel.setBackground(new Color(238,217,196));
+        player2_infoPanel.setBackground(new Color(238,217,196));
+        player3_infoPanel.setBackground(new Color(238,217,196));
+        player4_infoPanel.setBackground(new Color(238,217,196));
 
         infoPanel.add(player1_infoPanel);
         infoPanel.add(player2_infoPanel);
@@ -2136,6 +2247,45 @@ public class MonopolyView extends JFrame {
         editorMainPanel.add(landPanel);
     }
 
+    public void showTradeOption(int player, int ownership){
+        int owner = ownership + 1;
+        int player_display = player + 1;
+        int result = JOptionPane.showConfirmDialog(null,
+                "The Owner of this land is Player " + owner + " \n" +
+                        "Do you want to trade for it? \n" +
+                        "You have chance to negotiate with Player " + owner,
+                "Do you want to trade this land?", JOptionPane.YES_NO_OPTION);
+
+        if (result == JOptionPane.YES_OPTION) {
+            int price;
+            do {
+            String input = JOptionPane.showInputDialog("Enter your ideal price");
+                try {
+                    // Attempt to parse the input as an integer
+                    price = Integer.parseInt(input);
+                    // If parsing is successful, break the loop
+                    break;
+                } catch (NumberFormatException e) {
+                    // If parsing fails, show an error message and continue the loop
+                    JOptionPane.showMessageDialog(null, "Please enter a valid integer.");
+                }
+            } while (true);
+
+            int ownerresult = JOptionPane.showConfirmDialog(null,
+                    "Player " + player_display + " Offer you $" + price + " to buy your land \n" +
+                            "Do you accept it?",
+                    "Do you want to trade this land?", JOptionPane.YES_NO_OPTION);
+            if (ownerresult == JOptionPane.YES_OPTION) {
+                control.tradeLand(price, player, ownership);
+            } else {
+                JOptionPane.showMessageDialog(null, "You ignore the offer");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "You ignore the chance");
+        }
+    }
+
+
     //Image insert
     private ImageIcon createImageIcon(String path) {
         URL imgURL = getClass().getResource(path);
@@ -2156,6 +2306,6 @@ public class MonopolyView extends JFrame {
         }
     }
     private int coordToindex(int row, int col) {     // convert 2D array to 1D array index
-        return (col * 9) + row;
+        return (row * 9) + col;
     }
 }

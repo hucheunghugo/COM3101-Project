@@ -5,6 +5,7 @@ public class MonopolyModel {
     private int playerNumber = 0, currentPlayer = 0;
     private int[] currentPlayerPosition, nextPlayerPosition, playerBalance, boardPosition, landPrice = new int[32],
             landOwnership = new int[32], jailDate, noLandOwn = new int[4];
+    private String[] landName = new String[32];
     boolean[] isBankrupt;
     MonopolyController control;
 
@@ -26,6 +27,7 @@ public class MonopolyModel {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 landPrice[Integer.parseInt(data[0])] = Integer.parseInt(data[1]);
+                landName[Integer.parseInt(data[0])] = data[2];
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,7 +68,7 @@ public class MonopolyModel {
             boardPosition[i] = (32 - i) * 9;
         }
 
-        control.gameStart(playerNumber);
+        control.gameStart(playerNumber, landPrice, landName);
         control.updateBalance(playerBalance);
         control.updateLandOwn(noLandOwn);
         control.updateJailDate(jailDate);
@@ -140,6 +142,8 @@ public class MonopolyModel {
                 control.showPayNotify(price*0.1, ownership);
                 balanceUpdate(2, currentPlayer, price*0.1);
                 balanceUpdate(1, ownership, price*0.1);
+
+                control.showTradeOption(currentPlayer, ownership);
             }
         }
         landCount();
@@ -273,5 +277,12 @@ public class MonopolyModel {
             System.out.println("Land: " + landOwnership[i]);
         }
         control.updateOwner(boardPosition, landOwnership);
+    }
+
+    public void tradeLand(int price, int player, int owner){
+        landOwnership[currentPlayerPosition[player]] = player;
+        control.updateOwner(boardPosition, landOwnership);
+        balanceUpdate(1,owner, price);
+        balanceUpdate(2, player, price);
     }
 }

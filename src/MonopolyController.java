@@ -2,9 +2,6 @@ public class MonopolyController {
     MonopolyModel model;
     MonopolyView view;
 
-    //
-    // Methods for setting up the model and the view
-    //	
     public void setModel(MonopolyModel m) {
         this.model = m;
     }
@@ -17,8 +14,8 @@ public class MonopolyController {
         model.gameStart(playernum);
     }
 
-    public void gameStart(int playernum) {
-        view.game_start(playernum);
+    public void gameStart(int playernum, int[] landPrice, String[] landName) {
+        view.game_start(playernum, landPrice, landName);
     }
 
     public void modelUpdatePosition() {
@@ -115,5 +112,12 @@ public class MonopolyController {
 
     public void editOwner(int pos, int player) {
         model.editOwner(pos, player);
+    }
+
+    public void showTradeOption(int player, int owner){
+        view.showTradeOption(player, owner);
+    }
+    public void tradeLand(int price, int player, int owner){
+        model.tradeLand(price, player, owner);
     }
 }
