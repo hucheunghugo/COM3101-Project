@@ -2379,7 +2379,7 @@ public class MonopolyView extends JFrame {
                 if (input == null) {
                     break;
                 } else {
-                    if (input.isEmpty()) {
+                    if (!input.isEmpty()) {
                         try {
                             // Attempt to parse the input as an integer
                             price = Integer.parseInt(input);
