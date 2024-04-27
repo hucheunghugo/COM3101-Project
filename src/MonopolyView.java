@@ -2373,8 +2373,9 @@ public class MonopolyView extends JFrame {
 
         if (result == JOptionPane.YES_OPTION) {
             int price = 0;
-            String input = JOptionPane.showInputDialog("Enter your ideal price");
+            String input;
             do {
+                input =  JOptionPane.showInputDialog("Enter your ideal price");
                 if (input == null) {
                     break;
                 } else {
