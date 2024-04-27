@@ -50,8 +50,8 @@ public class MonopolyController {
         model.buyLand();
     }
 
-    public void showGiftNotify() {
-        view.showGiftNotify();
+    public void showGiftNotify(int price) {
+        view.showGiftNotify(price);
     }
 
     public void showChanceNotify(String msg) {
@@ -119,5 +119,8 @@ public class MonopolyController {
     }
     public void tradeLand(int price, int player, int owner){
         model.tradeLand(price, player, owner);
+    }
+    public void notAllowBuyingNotify(){
+        view.notAllowBuyingNotify();
     }
 }

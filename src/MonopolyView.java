@@ -851,8 +851,8 @@ public class MonopolyView extends JFrame {
         JOptionPane.showMessageDialog(null, "You have paid $" + price + " to player " + (ownership + 1));
     }
 
-    public void showGiftNotify(){
-        JOptionPane.showMessageDialog(null, "You have get $500 as a gift!");
+    public void showGiftNotify(int price){
+        JOptionPane.showMessageDialog(null, "You have get $"+ price +" as a gift!");
     }
 
     public void showChanceNotify(String msg){
@@ -886,13 +886,17 @@ public class MonopolyView extends JFrame {
     }
 
     public void showGameOverNotify(int winner){
-        JOptionPane.showMessageDialog(null, "Game Over! \n " +
+        JOptionPane.showMessageDialog(null, "Game Over! \n" +
                 "And the winner is Player" + winner);
         JPanel grid = (JPanel) boardPanel.getComponent(31);
         grid.removeAll();
         grid.setLayout(new BoxLayout(grid,BoxLayout.X_AXIS));
         grid.revalidate();
         grid.repaint();
+    }
+
+    public void notAllowBuyingNotify(){
+        JOptionPane.showMessageDialog(null, "You have no money to buy the land");
     }
 
     public void updateOwner(int[] boardPosition, int[] landOwnership){
@@ -2248,7 +2252,7 @@ public class MonopolyView extends JFrame {
                 JComboBox<Integer> comboBox = (JComboBox<Integer>) e.getSource();
                 int selectedPlayer = (int) comboBox.getSelectedItem();
                 if (selectedPlayer != -1) {
-                    control.editOwner(3, selectedPlayer - 1);
+                    control.editOwner(21, selectedPlayer - 1);
                 } else {
                     control.editOwner(21, -1);
                 }
@@ -2368,29 +2372,41 @@ public class MonopolyView extends JFrame {
                 "Do you want to trade this land?", JOptionPane.YES_NO_OPTION);
 
         if (result == JOptionPane.YES_OPTION) {
-            int price;
-            do {
+            int price = 0;
             String input = JOptionPane.showInputDialog("Enter your ideal price");
-                try {
-                    // Attempt to parse the input as an integer
-                    price = Integer.parseInt(input);
-                    // If parsing is successful, break the loop
+            do {
+                if (input == null) {
                     break;
-                } catch (NumberFormatException e) {
-                    // If parsing fails, show an error message and continue the loop
-                    JOptionPane.showMessageDialog(null, "Please enter a valid integer.");
-                }
-            } while (true);
+                } else {
+                    if (input.isEmpty()) {
+                        try {
+                            // Attempt to parse the input as an integer
+                            price = Integer.parseInt(input);
 
-            int ownerresult = JOptionPane.showConfirmDialog(null,
-                    "Player " + player_display + " Offer you $" + price + " to buy your land \n" +
-                            "Do you accept it?",
-                    "Do you want to trade this land?", JOptionPane.YES_NO_OPTION);
-            if (ownerresult == JOptionPane.YES_OPTION) {
-                control.tradeLand(price, player, ownership);
-            } else {
-                JOptionPane.showMessageDialog(null, "You ignore the offer");
+                            int ownerresult = JOptionPane.showConfirmDialog(null,
+                                    "Player " + player_display + " Offer you $" + price + " to buy your land \n" +
+                                            "Do you accept it?",
+                                    "Do you want to trade this land?", JOptionPane.YES_NO_OPTION);
+                            if (ownerresult == JOptionPane.YES_OPTION) {
+                                control.tradeLand(price, player, ownership);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "You ignore the offer");
+                            }
+
+                            // If parsing is successful, break the loop
+                            break;
+                        } catch (NumberFormatException e) {
+                            // If parsing fails, show an error message and continue the loop
+                            JOptionPane.showMessageDialog(null, "Please enter a valid integer.");
+                        }
+                    }
+                }
+            }while (true);
+
+            if (input == null) {
+                JOptionPane.getRootFrame().dispose();
             }
+
         } else {
             JOptionPane.showMessageDialog(null, "You ignore the chance");
         }

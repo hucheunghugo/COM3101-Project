@@ -93,7 +93,7 @@ public class MonopolyModel {
             if (nextPlayerPosition[currentPlayer] > 31) {
                 nextPlayerPosition[currentPlayer] -= 32;
                 balanceUpdate(1, currentPlayer, 2000);
-                control.showGiftNotify();
+                control.showGiftNotify(2000);
             }
         }
         control.updatePosition(playerNumber, nextPlayerPosition, boardPosition);
@@ -121,7 +121,7 @@ public class MonopolyModel {
 
         if (pos == 8){
             balanceUpdate(1, currentPlayer, 500);
-            control.showGiftNotify();
+            control.showGiftNotify(500);
         } else if(pos == 24) {
             control.showChanceNotify("Get caught by police \n Go to jail for 3 days");
             currentPlayerPosition[currentPlayer] = 16;
@@ -133,7 +133,11 @@ public class MonopolyModel {
             chance();
         } else if (pos != 16 && pos != 0 ) {
             if (ownership == -1) {
-                control.showBuyOption(price);
+                if(landPrice[pos] > playerBalance[currentPlayer]){
+                    control.notAllowBuyingNotify();
+                } else {
+                    control.showBuyOption(price);
+                }
             } else if (ownership == currentPlayer) {
 
             } else {
@@ -141,7 +145,13 @@ public class MonopolyModel {
                 balanceUpdate(2, currentPlayer, price*0.1);
                 balanceUpdate(1, ownership, price*0.1);
 
-                control.showTradeOption(currentPlayer, ownership);
+                if (playerBalance[currentPlayer] < 0) {
+                    isBankrupt[currentPlayer] = true;
+                }
+
+                if(!isBankrupt[currentPlayer]) {
+                    control.showTradeOption(currentPlayer, ownership);
+                }
             }
         }
         landCount();
@@ -187,7 +197,7 @@ public class MonopolyModel {
     public void chance(){
         //generate random int
         Random rand = new Random();
-        int random = rand.nextInt(9);
+        int random = rand.nextInt(8);
         if (random == 0) {
             control.showChanceNotify("You just win a $1000 lottery");
             //add money
@@ -207,11 +217,11 @@ public class MonopolyModel {
             balanceUpdate(1, currentPlayer, 500);
         } else if (random == 4) {
             //jail
-            control.showChanceNotify("You have committed crime \n Go to jail for 1 days");
+            control.showChanceNotify("You have committed crime \n Go to jail for 3 days");
             currentPlayerPosition[currentPlayer] = 16;
             nextPlayerPosition[currentPlayer] = 16;
             updatePosition();
-            jailDate[currentPlayer] = 1;
+            jailDate[currentPlayer] = 3;
             control.updateJailDate(jailDate);
         } else if(random == 5) {
             //jail
@@ -221,7 +231,7 @@ public class MonopolyModel {
             updatePosition();
             jailDate[currentPlayer] = 3;
             control.updateJailDate(jailDate);
-        } else if(random == 7) {
+        } else if(random == 6) {
             //Tornado
             control.showChanceNotify("You got blow up by tornado \n" +
                     "Teleport to random land");
@@ -234,7 +244,7 @@ public class MonopolyModel {
 
             landCheck();
             bankruptCheck();
-        } else if(random == 8) {
+        } else if(random == 7) {
             int count = 0;
             for(int i = 0; i < landOwnership.length; i++){
                 if (landOwnership[i] == currentPlayer){

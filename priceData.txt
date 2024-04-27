@@ -1,5 +1,5 @@
 1,1000,Lok Ma Chau
-2,1000,Fan Ling
+2,1500,HSUHK
 3,1000,Sha Tin
 5,1500,Tuen Mun
 6,1500,To Kwa Wan
