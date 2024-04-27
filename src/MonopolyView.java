@@ -2375,7 +2375,7 @@ public class MonopolyView extends JFrame {
             int price = 0;
             String input;
             do {
-                input =  JOptionPane.showInputDialog("Enter your ideal price");
+                input = JOptionPane.showInputDialog("Enter your ideal price");
                 if (input == null) {
                     break;
                 } else {
@@ -2383,17 +2383,21 @@ public class MonopolyView extends JFrame {
                         try {
                             // Attempt to parse the input as an integer
                             price = Integer.parseInt(input);
-
-                            // If parsing is successful, break the loop
-                            break;
+                            // If parsing is successful and price is greater than 0, break the loop
+                            if (price > 0) {
+                                break;
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Please enter a positive integer greater than 0.");
+                            }
                         } catch (NumberFormatException e) {
                             // If parsing fails, show an error message and continue the loop
                             JOptionPane.showMessageDialog(null, "Please enter a valid integer.");
                         }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Please enter a valid integer.");
                     }
-                    break;
                 }
-            }while (true);
+            } while (true);
             if (input == null) {
                 JOptionPane.getRootFrame().dispose();
             } else {
