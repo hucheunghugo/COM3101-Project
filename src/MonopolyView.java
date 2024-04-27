@@ -2384,16 +2384,6 @@ public class MonopolyView extends JFrame {
                             // Attempt to parse the input as an integer
                             price = Integer.parseInt(input);
 
-                            int ownerresult = JOptionPane.showConfirmDialog(null,
-                                    "Player " + player_display + " Offer you $" + price + " to buy your land \n" +
-                                            "Do you accept it?",
-                                    "Do you want to trade this land?", JOptionPane.YES_NO_OPTION);
-                            if (ownerresult == JOptionPane.YES_OPTION) {
-                                control.tradeLand(price, player, ownership);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "You ignore the offer");
-                            }
-
                             // If parsing is successful, break the loop
                             break;
                         } catch (NumberFormatException e) {
@@ -2401,13 +2391,22 @@ public class MonopolyView extends JFrame {
                             JOptionPane.showMessageDialog(null, "Please enter a valid integer.");
                         }
                     }
+                    break;
                 }
             }while (true);
-
             if (input == null) {
                 JOptionPane.getRootFrame().dispose();
+            } else {
+                int ownerresult = JOptionPane.showConfirmDialog(null,
+                        "Player " + player_display + " Offer you $" + price + " to buy your land \n" +
+                                "Do you accept it?",
+                        "Do you want to trade this land?", JOptionPane.YES_NO_OPTION);
+                if (ownerresult == JOptionPane.YES_OPTION) {
+                    control.tradeLand(price, player, ownership);
+                } else {
+                    JOptionPane.showMessageDialog(null, "You ignore the offer");
+                }
             }
-
         } else {
             JOptionPane.showMessageDialog(null, "You ignore the chance");
         }
